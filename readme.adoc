@@ -120,7 +120,7 @@ Back to <<top>>.
 === tableColumns
   
 .SQL Example
-[source,sql]
+[source,sql,linenums]
 ----
 include::{sqldir}/0003-TableColumns.sql[]
 ----
@@ -144,7 +144,7 @@ Back to <<top>>.
 === findColumn
   
 .SQL Example
-[source,sql]
+[source,sql,linenums]
 ----
 include::{sqldir}/0004-findColumns.sql[]
 ----
@@ -162,6 +162,96 @@ Reference: <<Column Type>>
 
 Back to <<top>>.
  
+
+<<<<
+[[joinQueryPartA]]
+=== joinQuery Part A
+
+*Objective:* Get a list of tracks from the *Artist* `Aerosmith` 
+where the *Composer* is `Joe Perry`.
+
+*Approach:* Begin with a simple query to get one element of the objective.
+In this query we want to get the *ArtistID* for `Aerosmith`
+  
+.SQL Example
+[source,sql,linenums]
+----
+include::{sqldir}/0005a-joinQuery.sql[]
+----
+<1> Column alias, notice name is `artistName` 
+<2> Table alias, use alias on every instance of columns from that table
+ 
+SQL Download link link:{sqldir}/0005a-joinQuery.sql[ click here]
+ 
+.Results
+[options='header']
+,===
+include::{resultdir}/0005a-joinQuery.csv[Results]
+,===
+ 
+Back to <<top>>.
+ 
+ 
+<<<<
+[[joinQueryPartB]]
+=== joinQuery Part B
+
+
+*Objective:* Get a list of tracks from the *Artist* `Aerosmith` 
+where the *Composer* is `Joe Perry`.
+
+*Approach:* Add on to the initial query to get a list of all the *Albums* for the *Artist* `Aerosmith`
+  
+.SQL Example
+[source,sql,linenums]
+----
+include::{sqldir}/0005b-joinQuery.sql[]
+----
+<1> Column alias, notice name is `artistName` 
+<2> Table alias, use alias on every instance of columns from that table
+<3> The common column used to join the two tables together
+ 
+SQL Download link link:{sqldir}/0005b-joinQuery.sql[ click here]
+ 
+.Results
+[options='header']
+,===
+include::{resultdir}/0005b-joinQuery.csv[Results]
+,===
+ 
+Back to <<top>>.
+
+<<<<
+[[joinQueryPartC]]
+=== joinQuery Part C
+  
+.SQL Example
+[source,sql,linenums]
+----
+include::{sqldir}/0005c-joinQuery.sql[]
+----
+<1> Column alias, notice name is `artistName` 
+<2> Table alias, use alias on every instance of columns from that table
+<3> The common column used to join the two tables together
+<4> The `like` with wildcard character `%` used on `Composer` column
+<5> The order by has both actual column name `AL.AlbumTitle` and
+an alias column `trackName`
+<6> Shows alternative method of `order by` using ordinal column numbers
+ 
+SQL Download link link:{sqldir}/0005c-joinQuery.sql[ click here]
+ 
+.Results
+[cols="^2,^2,^2,4,4,4,6" options='header']
+,===
+include::{resultdir}/0005c-joinQuery.csv[Results]
+,===
+ 
+Back to <<top>>.
+ 
+
+ 
+ 
+
 
 
 

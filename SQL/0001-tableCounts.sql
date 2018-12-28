@@ -21,8 +21,8 @@
 */
 
 Select 
-	'Album          ' as tableName
-	, count(*) as "Rows" from Album
+	'Album          ' as tableName   --<1>
+	, count(*) as "Rows" from Album  --<2>
 
 UNION
 Select 
@@ -74,4 +74,4 @@ Select
 	'Track' as tableName
 	, count(*) from Track	
 	
-Order by 2 desc
+Order by 2 desc  --<3>

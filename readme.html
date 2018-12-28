@@ -548,6 +548,9 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#dbObjects">3.2. dbObjects</a></li>
 <li><a href="#tableColumns">3.3. tableColumns</a></li>
 <li><a href="#findColumn">3.4. findColumn</a></li>
+<li><a href="#joinQueryPartA">3.5. joinQuery Part A</a></li>
+<li><a href="#joinQueryPartB">3.6. joinQuery Part B</a></li>
+<li><a href="#joinQueryPartC">3.7. joinQuery Part C</a></li>
 </ul>
 </li>
 <li><a href="#_reference">4. Reference</a>
@@ -666,8 +669,8 @@ A teacher, a really good teacher, is never a giver of truth; he is a guide, a po
 <span class="line-numbers">21</span><span class="comment">*/</span>
 <span class="line-numbers">22</span>
 <span class="line-numbers">23</span><span class="class">Select</span>
-<span class="line-numbers">24</span>        <span class="string"><span class="delimiter">'</span><span class="content">Album          </span><span class="delimiter">'</span></span> <span class="keyword">as</span> tableName
-<span class="line-numbers">25</span>        , <span class="predefined">count</span>(*) <span class="keyword">as</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Rows</span><span class="delimiter">&quot;</span></span> <span class="keyword">from</span> Album
+<span class="line-numbers">24</span>        <span class="string"><span class="delimiter">'</span><span class="content">Album          </span><span class="delimiter">'</span></span> <span class="keyword">as</span> tableName   <i class="conum" data-value="1"></i><b>(1)</b>
+<span class="line-numbers">25</span>        , <span class="predefined">count</span>(*) <span class="keyword">as</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Rows</span><span class="delimiter">&quot;</span></span> <span class="keyword">from</span> Album  <i class="conum" data-value="2"></i><b>(2)</b>
 <span class="line-numbers">26</span>
 <span class="line-numbers">27</span><span class="keyword">UNION</span>
 <span class="line-numbers">28</span><span class="class">Select</span>
@@ -719,7 +722,7 @@ A teacher, a really good teacher, is never a giver of truth; he is a guide, a po
 <span class="line-numbers">74</span>        <span class="string"><span class="delimiter">'</span><span class="content">Track</span><span class="delimiter">'</span></span> <span class="keyword">as</span> tableName
 <span class="line-numbers">75</span>        , <span class="predefined">count</span>(*) <span class="keyword">from</span> Track
 <span class="line-numbers">76</span>
-<span class="line-numbers">77</span><span class="keyword">Order</span> <span class="keyword">by</span> <span class="integer">2</span> <span class="directive">desc</span></code></pre>
+<span class="line-numbers">77</span><span class="keyword">Order</span> <span class="keyword">by</span> <span class="integer">2</span> <span class="directive">desc</span>  <i class="conum" data-value="3"></i><b>(3)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -1070,19 +1073,19 @@ A teacher, a really good teacher, is never a giver of truth; he is a guide, a po
 <div class="listingblock">
 <div class="title">SQL Example</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="sql"><span class="comment">/*
-=== tableColumns - Get a list of all the columns for a specific table or object in a known database
-
-==== TOPICS
-
-* This is a Teradata specific command
-
-==== TIPS
-
-* Change the database name from `chinook` to the database you are interested in
-*/</span>
-
-help <span class="type">table</span> chinook.invoice</code></pre>
+<pre class="CodeRay highlight"><code data-lang="sql"><span class="line-numbers"> 1</span><span class="comment">/*</span>
+<span class="line-numbers"> 2</span><span class="comment">=== tableColumns - Get a list of all the columns for a specific table or object in a known database</span>
+<span class="line-numbers"> 3</span><span class="comment"></span>
+<span class="line-numbers"> 4</span><span class="comment">==== TOPICS</span>
+<span class="line-numbers"> 5</span><span class="comment"></span>
+<span class="line-numbers"> 6</span><span class="comment">* This is a Teradata specific command</span>
+<span class="line-numbers"> 7</span><span class="comment"></span>
+<span class="line-numbers"> 8</span><span class="comment">==== TIPS</span>
+<span class="line-numbers"> 9</span><span class="comment"></span>
+<span class="line-numbers">10</span><span class="comment">* Change the database name from `chinook` to the database you are interested in</span>
+<span class="line-numbers">11</span><span class="comment">*/</span>
+<span class="line-numbers">12</span>
+<span class="line-numbers">13</span>help <span class="type">table</span> chinook.invoice</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1437,31 +1440,32 @@ Reference: <a href="#ColumnType">[ColumnType]</a>
 <div class="listingblock">
 <div class="title">SQL Example</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="sql"><span class="comment">/*
-=== findColumn - Find out what objects (Table, View) where a specific named column exist
-
-==== TOPICS
-
-* This is a Teradata specific command
-* The list of columns are the ones that are the most important,
-there are many other columns available. Use a single column name (*) to see them all.
-
-==== TIPS
-
-* CoumnTypes Reference: http://developer.teradata.com/doc/connectivity/tdnetdp/14.00/webhelp/DataTypeMappings.html
-* Replace `CustomerID` with the column you are interested in
-
-*/</span>
-
-<span class="class">select</span>
-        ColumnName
-        ,DatabaseName
-        ,TableName
-        ,ColumnFormat
-        ,ColumnType
-        ,ColumnLength
-<span class="keyword">from</span> dbc.columnsX
-<span class="keyword">where</span> ColumnName = <span class="string"><span class="delimiter">'</span><span class="content">CustomerID</span><span class="delimiter">'</span></span></code></pre>
+<pre class="CodeRay highlight"><code data-lang="sql"><span class="line-numbers"> 1</span><span class="comment">/*</span>
+<span class="line-numbers"> 2</span><span class="comment">=== findColumn - Find out what objects (Table, View) where a specific named column exist</span>
+<span class="line-numbers"> 3</span><span class="comment"></span>
+<span class="line-numbers"> 4</span><span class="comment">==== TOPICS</span>
+<span class="line-numbers"> 5</span><span class="comment"></span>
+<span class="line-numbers"> 6</span><span class="comment">* This is a Teradata specific command</span>
+<span class="line-numbers"> 7</span><span class="comment">* The list of columns are the ones that are the most important,</span>
+<span class="line-numbers"> 8</span><span class="comment">there are many other columns available. Use a single column name (*) to see them all.</span>
+<span class="line-numbers"> 9</span><span class="comment"></span>
+<span class="line-numbers">10</span><span class="comment">==== TIPS</span>
+<span class="line-numbers">11</span><span class="comment"></span>
+<span class="line-numbers">12</span><span class="comment">* CoumnTypes Reference: http://developer.teradata.com/doc/connectivity/tdnetdp/14.00/webhelp/DataTypeMappings.html</span>
+<span class="line-numbers">13</span><span class="comment">* Replace `CustomerID` with the column you are interested in</span>
+<span class="line-numbers">14</span><span class="comment"></span>
+<span class="line-numbers">15</span><span class="comment">*/</span>
+<span class="line-numbers">16</span>
+<span class="line-numbers">17</span><span class="class">select</span>
+<span class="line-numbers">18</span>        ColumnName
+<span class="line-numbers">19</span>        ,DatabaseName
+<span class="line-numbers">20</span>        ,TableName
+<span class="line-numbers">21</span>        ,ColumnFormat
+<span class="line-numbers">22</span>        ,ColumnType
+<span class="line-numbers">23</span>        ,ColumnLength
+<span class="line-numbers">24</span><span class="keyword">from</span> dbc.columnsX
+<span class="line-numbers">25</span><span class="keyword">where</span> ColumnName = <span class="string"><span class="delimiter">'</span><span class="content">CustomerID</span><span class="delimiter">'</span></span>
+<span class="line-numbers">26</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1524,6 +1528,382 @@ Reference: <a href="#_column_type">Column Type</a>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
+<div class="sect2">
+<h3 id="joinQueryPartA">3.5. joinQuery Part A</h3>
+<div class="paragraph">
+<p><strong>Objective:</strong> Get a list of tracks from the <strong>Artist</strong> <code>Aerosmith</code>
+where the <strong>Composer</strong> is <code>Joe Perry</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Approach:</strong> Begin with a simple query to get one element of the objective.
+In this query we want to get the <strong>ArtistID</strong> for <code>Aerosmith</code></p>
+</div>
+<div class="listingblock">
+<div class="title">SQL Example</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="sql"><span class="line-numbers"> 1</span><span class="comment">/*</span>
+<span class="line-numbers"> 2</span><span class="comment">=== joinQuery - Multiple Table join with result restriction</span>
+<span class="line-numbers"> 3</span><span class="comment"></span>
+<span class="line-numbers"> 4</span><span class="comment">==== TOPICS</span>
+<span class="line-numbers"> 5</span><span class="comment"></span>
+<span class="line-numbers"> 6</span><span class="comment">* This query joins multiple table together</span>
+<span class="line-numbers"> 7</span><span class="comment"></span>
+<span class="line-numbers"> 8</span><span class="comment">==== TIPS</span>
+<span class="line-numbers"> 9</span><span class="comment"></span>
+<span class="line-numbers">10</span><span class="comment">* Table alias shorten the typing needed to complete the query</span>
+<span class="line-numbers">11</span><span class="comment">1-2 character alias recommended.</span>
+<span class="line-numbers">12</span><span class="comment">* Column alias help to give meaningful, non conflicting names.</span>
+<span class="line-numbers">13</span><span class="comment">* Results being restricted with a a `where` clause</span>
+<span class="line-numbers">14</span><span class="comment">*/</span>
+<span class="line-numbers">15</span>
+<span class="line-numbers">16</span><span class="class">Select</span>
+<span class="line-numbers">17</span>   AR.ArtistID
+<span class="line-numbers">18</span>   ,AR.name <span class="keyword">as</span> artistName  <i class="conum" data-value="1"></i><b>(1)</b>
+<span class="line-numbers">19</span><span class="keyword">From</span> Artist AR  <i class="conum" data-value="2"></i><b>(2)</b>
+<span class="line-numbers">20</span><span class="keyword">where</span> artistName = <span class="string"><span class="delimiter">'</span><span class="content">Aerosmith</span><span class="delimiter">'</span></span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Column alias, notice name is <code>artistName</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Table alias, use alias on every instance of columns from that table</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>SQL Download link <a href="./SQL/0005a-joinQuery.sql"> click here</a></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 5. Results</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">ArtistId</th>
+<th class="tableblock halign-left valign-top">artistName</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Aerosmith</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Back to <a href="#top">Introduction</a>.</p>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+<div class="sect2">
+<h3 id="joinQueryPartB">3.6. joinQuery Part B</h3>
+<div class="paragraph">
+<p><strong>Objective:</strong> Get a list of tracks from the <strong>Artist</strong> <code>Aerosmith</code>
+where the <strong>Composer</strong> is <code>Joe Perry</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Approach:</strong> Add on to the initial query to get a list of all the <strong>Albums</strong> for the <strong>Artist</strong> <code>Aerosmith</code></p>
+</div>
+<div class="listingblock">
+<div class="title">SQL Example</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="sql"><span class="line-numbers"> 1</span><span class="comment">/*</span>
+<span class="line-numbers"> 2</span><span class="comment">=== joinQuery - Multiple Table join with result restriction</span>
+<span class="line-numbers"> 3</span><span class="comment"></span>
+<span class="line-numbers"> 4</span><span class="comment">Part B - Add the second table for the Join</span>
+<span class="line-numbers"> 5</span><span class="comment"></span>
+<span class="line-numbers"> 6</span><span class="comment">==== TOPICS</span>
+<span class="line-numbers"> 7</span><span class="comment"></span>
+<span class="line-numbers"> 8</span><span class="comment">* This query joins multiple table together</span>
+<span class="line-numbers"> 9</span><span class="comment"></span>
+<span class="line-numbers">10</span><span class="comment">==== TIPS</span>
+<span class="line-numbers">11</span><span class="comment"></span>
+<span class="line-numbers">12</span><span class="comment">* Table alias shorten the typing needed to complete the query</span>
+<span class="line-numbers">13</span><span class="comment">1-2 character alias recommended.</span>
+<span class="line-numbers">14</span><span class="comment">* Column alias help to give meaningful, non conflicting names.</span>
+<span class="line-numbers">15</span><span class="comment">* Coulmns for join must match in data type and size</span>
+<span class="line-numbers">16</span><span class="comment">* Good practice is that System Generated Primary Key column name be named with `ID` at the end</span>
+<span class="line-numbers">17</span><span class="comment">* Primary Key and Foreign Key matching columns should usew the same name</span>
+<span class="line-numbers">18</span><span class="comment"></span>
+<span class="line-numbers">19</span><span class="comment">*/</span>
+<span class="line-numbers">20</span>
+<span class="line-numbers">21</span><span class="class">Select</span>
+<span class="line-numbers">22</span>   AR.ArtistID
+<span class="line-numbers">23</span>   ,AL.AlbumID
+<span class="line-numbers">24</span>   ,AR.name <span class="keyword">as</span> artistName  <i class="conum" data-value="1"></i><b>(1)</b>
+<span class="line-numbers">25</span>   ,AL.AlbumTitle
+<span class="line-numbers">26</span><span class="keyword">From</span> Artist AR  <i class="conum" data-value="2"></i><b>(2)</b>
+<span class="line-numbers">27</span>
+<span class="line-numbers">28</span><span class="keyword">inner</span> <span class="keyword">Join</span> Album AL <i class="conum" data-value="2"></i><b>(2)</b>
+<span class="line-numbers">29</span><span class="keyword">on</span> AR.ArtistID = AL.ArtistID  <i class="conum" data-value="3"></i><b>(3)</b>
+<span class="line-numbers">30</span>
+<span class="line-numbers">31</span><span class="keyword">where</span> artistName = <span class="string"><span class="delimiter">'</span><span class="content">Aerosmith</span><span class="delimiter">'</span></span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Column alias, notice name is <code>artistName</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Table alias, use alias on every instance of columns from that table</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The common column used to join the two tables together</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>SQL Download link <a href="./SQL/0005b-joinQuery.sql"> click here</a></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 6. Results</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">ArtistId</th>
+<th class="tableblock halign-left valign-top">AlbumId</th>
+<th class="tableblock halign-left valign-top">artistName</th>
+<th class="tableblock halign-left valign-top">AlbumTitle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Aerosmith</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Big Ones</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Back to <a href="#top">Introduction</a>.</p>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+<div class="sect2">
+<h3 id="joinQueryPartC">3.7. joinQuery Part C</h3>
+<div class="listingblock">
+<div class="title">SQL Example</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="sql"><span class="line-numbers"> 1</span><span class="comment">/*</span>
+<span class="line-numbers"> 2</span><span class="comment">=== joinQuery - Multiple Table join with result restriction</span>
+<span class="line-numbers"> 3</span><span class="comment"></span>
+<span class="line-numbers"> 4</span><span class="comment">Part C - Add the third table and composer restriction</span>
+<span class="line-numbers"> 5</span><span class="comment"></span>
+<span class="line-numbers"> 6</span><span class="comment">==== TOPICS</span>
+<span class="line-numbers"> 7</span><span class="comment"></span>
+<span class="line-numbers"> 8</span><span class="comment">* List of all the `Aerosmith` tracks that `Joe Perry` was one of the cpmposers</span>
+<span class="line-numbers"> 9</span><span class="comment">* This query joins multiple tables together</span>
+<span class="line-numbers">10</span><span class="comment">* Primary and Foreign keys are system generated and always exist</span>
+<span class="line-numbers">11</span><span class="comment"></span>
+<span class="line-numbers">12</span><span class="comment">==== TIPS</span>
+<span class="line-numbers">13</span><span class="comment"></span>
+<span class="line-numbers">14</span><span class="comment">* Table alias shorten the typing needed to complete the query</span>
+<span class="line-numbers">15</span><span class="comment">1-3 character alias recommended.</span>
+<span class="line-numbers">16</span><span class="comment">* Column alias help to give meaningful, non conflicting names.</span>
+<span class="line-numbers">17</span><span class="comment">Good practice is to have table alias used everywhere if used</span>
+<span class="line-numbers">18</span><span class="comment">* Coulmns for join must match in data type and size</span>
+<span class="line-numbers">19</span><span class="comment">* Good practice is that System Generated Primary Key column name be named with `ID` at the end</span>
+<span class="line-numbers">20</span><span class="comment">* Primary Key and Foreign Key matching columns should usew the same name</span>
+<span class="line-numbers">21</span><span class="comment">* `like` used to find a column that contains some string`, note the % indicating any number of characters before/after</span>
+<span class="line-numbers">22</span><span class="comment">* Order by can use either 1. Actual column names, 2. Alias column names, 3. Ordinal position is results list</span>
+<span class="line-numbers">23</span><span class="comment">* Alias column names use lowerUpper naming to identify them as alias</span>
+<span class="line-numbers">24</span><span class="comment">only works because original names are camelback naming.</span>
+<span class="line-numbers">25</span><span class="comment"></span>
+<span class="line-numbers">26</span><span class="comment">*/</span>
+<span class="line-numbers">27</span>
+<span class="line-numbers">28</span><span class="class">Select</span>
+<span class="line-numbers">29</span>   AR.ArtistID
+<span class="line-numbers">30</span>   ,AL.AlbumID
+<span class="line-numbers">31</span>   ,T.TrackID
+<span class="line-numbers">32</span>   ,AR.name <span class="keyword">as</span> artistName  <i class="conum" data-value="1"></i><b>(1)</b>
+<span class="line-numbers">33</span>   ,AL.AlbumTitle
+<span class="line-numbers">34</span>   ,T.Name <span class="keyword">as</span> trackName    <i class="conum" data-value="1"></i><b>(1)</b>
+<span class="line-numbers">35</span>   ,T.Composer
+<span class="line-numbers">36</span><span class="keyword">From</span> Artist AR  <i class="conum" data-value="2"></i><b>(2)</b>
+<span class="line-numbers">37</span>
+<span class="line-numbers">38</span><span class="keyword">inner</span> <span class="keyword">Join</span> Album AL <i class="conum" data-value="2"></i><b>(2)</b>
+<span class="line-numbers">39</span><span class="keyword">on</span> AR.ArtistID = AL.ArtistID  <i class="conum" data-value="3"></i><b>(3)</b>
+<span class="line-numbers">40</span>
+<span class="line-numbers">41</span><span class="keyword">inner</span> <span class="keyword">join</span> Track T
+<span class="line-numbers">42</span><span class="keyword">on</span> AL.AlbumID = T.AlbumID
+<span class="line-numbers">43</span>
+<span class="line-numbers">44</span><span class="keyword">where</span> AR.Name = <span class="string"><span class="delimiter">'</span><span class="content">Aerosmith</span><span class="delimiter">'</span></span>
+<span class="line-numbers">45</span>  <span class="keyword">and</span> T.Composer <span class="keyword">like</span> <span class="string"><span class="delimiter">'</span><span class="content">%Joe Perry%</span><span class="delimiter">'</span></span>  <i class="conum" data-value="4"></i><b>(4)</b>
+<span class="line-numbers">46</span>
+<span class="line-numbers">47</span><span class="keyword">order</span> <span class="keyword">by</span> AL.AlbumTitle
+<span class="line-numbers">48</span>         ,trackName  <i class="conum" data-value="5"></i><b>(5)</b>
+<span class="line-numbers">49</span><span class="comment">-- order by 5,6 </span><i class="conum" data-value="6"></i><b>(6)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Column alias, notice name is <code>artistName</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Table alias, use alias on every instance of columns from that table</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The common column used to join the two tables together</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>The <code>like</code> with wildcard character <code>%</code> used on <code>Composer</code> column</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>The order by has both actual column name <code>AL.AlbumTitle</code> and
+an alias column <code>trackName</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>Shows alternative method of <code>order by</code> using ordinal column numbers</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>SQL Download link <a href="./SQL/0005c-joinQuery.sql"> click here</a></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 7. Results</caption>
+<colgroup>
+<col style="width: 8.3333%;">
+<col style="width: 8.3333%;">
+<col style="width: 8.3333%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 25.0003%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">ArtistId</th>
+<th class="tableblock halign-center valign-top">AlbumId</th>
+<th class="tableblock halign-center valign-top">TrackId</th>
+<th class="tableblock halign-left valign-top">artistName</th>
+<th class="tableblock halign-left valign-top">AlbumTitle</th>
+<th class="tableblock halign-left valign-top">trackName</th>
+<th class="tableblock halign-left valign-top">Composer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">31</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Aerosmith</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Big Ones</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Blind Man</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Steven Tyler, Joe Perry, Taylor Rhodes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">34</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Aerosmith</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Big Ones</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Crazy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Steven Tyler, Joe Perry, Desmond Child</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">29</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Aerosmith</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Big Ones</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cryin'</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Steven Tyler, Joe Perry, Taylor Rhodes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">27</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Aerosmith</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Big Ones</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dude (Looks Like A Lady)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Steven Tyler, Joe Perry, Desmond Child</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">35</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Aerosmith</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Big Ones</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Eat The Rich</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Steven Tyler, Joe Perry, Jim Vallance</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">37</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Aerosmith</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Big Ones</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Livin' On The Edge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Steven Tyler, Joe Perry, Mark Hudson</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">24</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Aerosmith</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Big Ones</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Love In An Elevator</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Steven Tyler, Joe Perry</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">25</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Aerosmith</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Big Ones</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rag Doll</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Steven Tyler, Joe Perry, Jim Vallance, Holly Knight</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">23</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Aerosmith</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Big Ones</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Walk On Water</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Steven Tyler, Joe Perry, Jack Blades, Tommy Shaw</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">26</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Aerosmith</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Big Ones</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">What It Takes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Steven Tyler, Joe Perry, Desmond Child</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Back to <a href="#top">Introduction</a>.</p>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -1535,7 +1915,7 @@ Reference: <a href="#_column_type">Column Type</a>
 <p>ColumnType reference table.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 5. ColumnType</caption>
+<caption class="title">Table 8. ColumnType</caption>
 <colgroup>
 <col style="width: 27.2727%;">
 <col style="width: 72.7273%;">
@@ -1725,7 +2105,7 @@ Reference: <a href="#_column_type">Column Type</a>
 <h2 id="_document_history">5. Document History</h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 6. Document History</caption>
+<caption class="title">Table 9. Document History</caption>
 <colgroup>
 <col style="width: 16.6666%;">
 <col style="width: 16.6666%;">
@@ -1768,7 +2148,7 @@ Reference: <a href="#_column_type">Column Type</a>
 <div id="footer">
 <div id="footer-text">
 Version 2.1c<br>
-Last updated 2018-12-28 10:53:37 -0500
+Last updated 2018-12-28 12:24:34 -0500
 </div>
 </div>
 </body>

@@ -44,6 +44,6 @@ on AL.AlbumID = T.AlbumID
 where AR.Name = 'Aerosmith' 
   and T.Composer like '%Joe Perry%'  --<4>
 
-order by AlbumTitle
+order by AL.AlbumTitle
          ,trackName  --<5>
--- order by 5,6
+-- order by 5,6 --<6>
