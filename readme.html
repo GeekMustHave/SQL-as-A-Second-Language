@@ -529,8 +529,8 @@ table.CodeRay td.code>pre{padding:0}
 <div class="details">
 <span id="author" class="author">John HR Schuster</span><br>
 <span id="email" class="email"><a href="mailto:John.schuster@PhoenixWorkgroup.com">John.schuster@PhoenixWorkgroup.com</a></span><br>
-<span id="revnumber">version 2.1c,</span>
-<span id="revdate">12/20/2018</span>
+<span id="revnumber">version 2.1f,</span>
+<span id="revdate">12/28/2018</span>
 <br><span id="revremark">Training Document</span>
 </div>
 <div id="toc" class="toc2">
@@ -551,6 +551,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#joinQueryPartA">3.5. joinQuery Part A</a></li>
 <li><a href="#joinQueryPartB">3.6. joinQuery Part B</a></li>
 <li><a href="#joinQueryPartC">3.7. joinQuery Part C</a></li>
+<li><a href="#derivedTablePartA">3.8. derivedTable Part A</a></li>
 </ul>
 </li>
 <li><a href="#_reference">4. Reference</a>
@@ -611,6 +612,9 @@ A teacher, a really good teacher, is never a giver of truth; he is a guide, a po
 <div class="sect1">
 <h2 id="_questions">2. Questions</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>To ask a <strong>New question</strong> to be added to this list, please email it to <a href="mailto:john.schuster@PhoenixWorkgroup.com">john.schuster@PhoenixWorkgroup.com</a>.</p>
+</div>
 <div class="qlist qanda">
 <ol>
 <li>
@@ -628,6 +632,18 @@ A teacher, a really good teacher, is never a giver of truth; he is a guide, a po
 <li>
 <p><em>How can I find where a specific column exist in a database?</em></p>
 <p>View this query <a href="#findColumn">findColumn</a></p>
+</li>
+<li>
+<p><em>How do I Join two tables together?</em></p>
+<p>View this query <a href="#joinQueryPartB">joinQuery Part B</a></p>
+</li>
+<li>
+<p><em>How do I restrict the results by a column that <code>contains</code> some string?</em></p>
+<p>View this query <a href="#joinQueryPartC">joinQuery Part C</a></p>
+</li>
+<li>
+<p><em>How do I sort the results by multiple columns?</em></p>
+<p>View this query <a href="#joinQueryPartC">joinQuery Part C</a></p>
 </li>
 <li>
 <p><em>How can I best use "Prompts" in SQL Assistant?</em></p>
@@ -1698,6 +1714,14 @@ where the <strong>Composer</strong> is <code>Joe Perry</code>.</p>
 </div>
 <div class="sect2">
 <h3 id="joinQueryPartC">3.7. joinQuery Part C</h3>
+<div class="paragraph">
+<p><strong>Objective:</strong> Get a list of tracks from the <strong>Artist</strong> <code>Aerosmith</code>
+where the <strong>Composer</strong> is <code>Joe Perry</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Approach:</strong> Complete the request by joining the <code>Title</code> table and a row restriction
+using the <code>like</code> with the wildcard <code>%</code> character.</p>
+</div>
 <div class="listingblock">
 <div class="title">SQL Example</div>
 <div class="content">
@@ -1904,6 +1928,229 @@ an alias column <code>trackName</code></td>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
+<div class="sect2">
+<h3 id="derivedTablePartA">3.8. derivedTable Part A</h3>
+<div class="paragraph">
+<p><strong>Objective:</strong> Get a list by Artist that includes number of albums, number of tracks, total artist minutes and average minutes per track.</p>
+</div>
+<div class="paragraph">
+<p><strong>Approach:</strong> Use a set of derived queries to get the parts of the request and assemble them in the main query.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This request could be done using a single query.  The derived tables are being used here,
+to show how they can be used to build parts of the results, that are assembled in a main query later.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>This query gets the album count by artist.</p>
+</div>
+<div class="listingblock">
+<div class="title">SQL Example</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="sql"><span class="line-numbers"> 1</span><span class="comment">/*</span>
+<span class="line-numbers"> 2</span><span class="comment">=== derivedTable - Gets the list of artists and album counts</span>
+<span class="line-numbers"> 3</span><span class="comment"></span>
+<span class="line-numbers"> 4</span><span class="comment">Part A - Gets the list of artists with album count</span>
+<span class="line-numbers"> 5</span><span class="comment">this will become one of the derived tables in the final query</span>
+<span class="line-numbers"> 6</span><span class="comment"></span>
+<span class="line-numbers"> 7</span><span class="comment">==== TOPICS</span>
+<span class="line-numbers"> 8</span><span class="comment"></span>
+<span class="line-numbers"> 9</span><span class="comment">* Table alias</span>
+<span class="line-numbers">10</span><span class="comment">* Column Alias</span>
+<span class="line-numbers">11</span><span class="comment">* Join objects (Table, View, Derived Table) together</span>
+<span class="line-numbers">12</span><span class="comment">* Derived Table (Sub-Query)</span>
+<span class="line-numbers">13</span><span class="comment">* Count aggregate</span>
+<span class="line-numbers">14</span><span class="comment"></span>
+<span class="line-numbers">15</span><span class="comment"></span>
+<span class="line-numbers">16</span><span class="comment">==== TIPS</span>
+<span class="line-numbers">17</span><span class="comment"></span>
+<span class="line-numbers">18</span><span class="comment">.Table Alias</span>
+<span class="line-numbers">19</span><span class="comment">* Table alias shorten the typing needed to complete the query,</span>
+<span class="line-numbers">20</span><span class="comment">1-3 character alias recommended.</span>
+<span class="line-numbers">21</span><span class="comment">* Good practice is to have table alias used everywhere in the query.</span>
+<span class="line-numbers">22</span><span class="comment"></span>
+<span class="line-numbers">23</span><span class="comment">.Column Alias</span>
+<span class="line-numbers">24</span><span class="comment">* Column alias help to give meaningful, non conflicting names.</span>
+<span class="line-numbers">25</span><span class="comment">* Good practice, alias column names use lowerUpper naming</span>
+<span class="line-numbers">26</span><span class="comment">to identify them as alias (albumCount)</span>
+<span class="line-numbers">27</span><span class="comment">* Good practic, Use the same alias across all queries.</span>
+<span class="line-numbers">28</span><span class="comment"></span>
+<span class="line-numbers">29</span><span class="comment">.Naming practice</span>
+<span class="line-numbers">30</span><span class="comment">* Good practice, System Generated Primary Index column name be</span>
+<span class="line-numbers">31</span><span class="comment">include with `ID` suffix.</span>
+<span class="line-numbers">32</span><span class="comment">* Good practice, Primary Key and Foreign Key join columns</span>
+<span class="line-numbers">33</span><span class="comment">should use the same name.</span>
+<span class="line-numbers">34</span><span class="comment"></span>
+<span class="line-numbers">35</span><span class="comment">.Join requirements</span>
+<span class="line-numbers">36</span><span class="comment">* Coulmns for join must match in data type and size.</span>
+<span class="line-numbers">37</span><span class="comment"></span>
+<span class="line-numbers">38</span><span class="comment">.Derived Tables (Sub-Queries)</span>
+<span class="line-numbers">39</span><span class="comment">* Start with a regular query until you get the results you need.</span>
+<span class="line-numbers">40</span><span class="comment">* Enclose the regular query in `(...)` and assign a table alias name.</span>
+<span class="line-numbers">41</span><span class="comment">* Join the derived table to another.</span>
+<span class="line-numbers">42</span><span class="comment"></span>
+<span class="line-numbers">43</span><span class="comment">.Aggregate Functions</span>
+<span class="line-numbers">44</span><span class="comment">* Functions used to compress or limit the number of rows into a single row.</span>
+<span class="line-numbers">45</span><span class="comment">* `Count(?)` Counts the number of rows, duplicates included in the count.</span>
+<span class="line-numbers">46</span><span class="comment"></span>
+<span class="line-numbers">47</span><span class="comment">*/</span>
+<span class="line-numbers">48</span>
+<span class="line-numbers">49</span>
+<span class="line-numbers">50</span><span class="class">select</span>
+<span class="line-numbers">51</span>    AR.ArtistID
+<span class="line-numbers">52</span>    ,<span class="predefined">count</span>(AL.AlbumID) <span class="keyword">as</span> albumCount  <i class="conum" data-value="1"></i><b>(1)</b> <i class="conum" data-value="2"></i><b>(2)</b>
+<span class="line-numbers">53</span><span class="keyword">from</span> Album AL <i class="conum" data-value="3"></i><b>(3)</b>
+<span class="line-numbers">54</span>
+<span class="line-numbers">55</span><span class="keyword">INNER</span> <span class="keyword">JOIN</span> Artist AR  <i class="conum" data-value="3"></i><b>(3)</b>
+<span class="line-numbers">56</span><span class="keyword">on</span> AR.ArtistID = AL.ArtistID <i class="conum" data-value="4"></i><b>(4)</b>
+<span class="line-numbers">57</span>
+<span class="line-numbers">58</span><span class="keyword">Group</span> <span class="keyword">by</span> AR.ArtistID  <i class="conum" data-value="5"></i><b>(5)</b>
+<span class="line-numbers">59</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Column Alias</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Aggregate <code>Count</code> function</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Table alias</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Common column to join two tables</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Any non-aggregate column must be included in <code>group by</code></td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>SQL Download link <a href="./SQL/0006a-derivedTable.sql"> click here</a></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 8. Results</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">ArtistId</th>
+<th class="tableblock halign-left valign-top">albumCount</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">223</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">265</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">19</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">122</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">80</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">244</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">202</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">101</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">59</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">141</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">242</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">263</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">221</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">120</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">78</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">99</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">200</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">17</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">57</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Only 20 rows of the result being shown.  The result set has 204 rows, one for each artist.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Back to <a href="#top">Introduction</a>.</p>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -1915,7 +2162,7 @@ an alias column <code>trackName</code></td>
 <p>ColumnType reference table.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 8. ColumnType</caption>
+<caption class="title">Table 9. ColumnType</caption>
 <colgroup>
 <col style="width: 27.2727%;">
 <col style="width: 72.7273%;">
@@ -2105,7 +2352,7 @@ an alias column <code>trackName</code></td>
 <h2 id="_document_history">5. Document History</h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 9. Document History</caption>
+<caption class="title">Table 10. Document History</caption>
 <colgroup>
 <col style="width: 16.6666%;">
 <col style="width: 16.6666%;">
@@ -2121,6 +2368,18 @@ an alias column <code>trackName</code></td>
 </tr>
 </thead>
 <tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12/28/2018</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">V2.1f</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JHRS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Added derivedQuery from archived</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12/27/2018</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">V2.1e</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JHRS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Added joinQuery set from archive</p></td>
+</tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">12/21/2018</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">V2.1d</p></td>
@@ -2147,8 +2406,8 @@ an alias column <code>trackName</code></td>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 2.1c<br>
-Last updated 2018-12-28 12:24:34 -0500
+Version 2.1f<br>
+Last updated 2018-12-28 13:37:04 -0500
 </div>
 </div>
 </body>

@@ -1,6 +1,6 @@
 = SQL as a Second Language
 John Schuster <John.schuster@PhoenixWorkgroup.com>
-v2.1c, 12/20/2018: Training Document
+v2.1f, 12/28/2018: Training Document
 :source-highlighter: coderay
 :coderay-css: class
 :coderay-linenums-mode: inline
@@ -51,6 +51,8 @@ image::chinook-diagram.png[Chinook Database Diagram, align='center']
 <<<< 
 == Questions
 
+To ask a *New question* to be added to this list, please email it to john.schuster@PhoenixWorkgroup.com. 
+
 [qanda]
 How can I get a count of the number of rows in some of the tables of a database?::
   View this query <<tableCounts>>
@@ -63,6 +65,15 @@ How can I find out the columns and metadata about a specific object (Table, View
 
 How can I find where a specific column exist in a database?::
   View this query <<findColumn>>
+
+How do I Join two tables together?::
+  View this query <<joinQueryPartB>>  
+
+How do I restrict the results by a column that `contains` some string?::
+    View this query <<joinQueryPartC>>  
+
+How do I sort the results by multiple columns?::
+    View this query <<joinQueryPartC>>      
 
 How can I best use "Prompts" in SQL Assistant?::
   unlinked
@@ -224,6 +235,13 @@ Back to <<top>>.
 <<<<
 [[joinQueryPartC]]
 === joinQuery Part C
+
+*Objective:* Get a list of tracks from the *Artist* `Aerosmith` 
+where the *Composer* is `Joe Perry`.
+
+*Approach:* Complete the request by joining the `Title` table and a row restriction
+using the `like` with the wildcard `%` character.
+  
   
 .SQL Example
 [source,sql,linenums]
@@ -249,6 +267,43 @@ include::{resultdir}/0005c-joinQuery.csv[Results]
 Back to <<top>>.
  
 
+<<<<
+[[derivedTablePartA]]
+=== derivedTable Part A
+
+*Objective:* Get a list by Artist that includes number of albums, number of tracks, total artist minutes and average minutes per track.
+
+*Approach:* Use a set of derived queries to get the parts of the request and assemble them in the main query.
+
+NOTE: This request could be done using a single query.  The derived tables are being used here, 
+to show how they can be used to build parts of the results, that are assembled in a main query later.
+
+This query gets the album count by artist.
+  
+  
+.SQL Example
+[source,sql,linenums]
+----
+include::{sqldir}/0006a-derivedTable.sql[]
+----
+<1> Column Alias
+<2> Aggregate `Count` function
+<3> Table alias
+<4> Common column to join two tables
+<5> Any non-aggregate column must be included in `group by`
+ 
+SQL Download link link:{sqldir}/0006a-derivedTable.sql[ click here]
+ 
+.Results
+[cols="10,10" options='header']
+,===
+include::{resultdir}/0006a-derivedTable.csv[Results,lines=1..20]
+,===
+
+NOTE: Only 20 rows of the result being shown.  The result set has 204 rows, one for each artist.
+ 
+Back to <<top>>.
+ 
  
  
 
@@ -285,6 +340,8 @@ include::{docodir}/column-type.csv[ColumnType]
 [cols='2,2,2,6' options='header']
 |===
 | Date  | Version | Author | Description
+| 12/28/2018 | V2.1f | JHRS | Added derivedQuery from archived
+| 12/27/2018 | V2.1e | JHRS | Added joinQuery set from archive
 | 12/21/2018 | V2.1d | JHRS | Added vsCode snippet for quick query insert
                               added Reference section
 | 12/20/2018 | V2.1c | JHRS | Attempting standard document template
