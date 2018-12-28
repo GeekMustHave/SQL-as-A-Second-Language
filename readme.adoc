@@ -1,0 +1,224 @@
+= SQL as a Second Language
+John Schuster <John.schuster@PhoenixWorkgroup.com>
+v2.1c, 12/20/2018: Training Document
+:source-highlighter: coderay
+:coderay-css: class
+:coderay-linenums-mode: inline
+:Author: John HR Schuster
+:Company: Phoenix Learning Labs
+:toc: left
+:toclevels: 4:
+:imagesdir: ./images
+:pagenums:
+:numbered: 
+:chapter-label: 
+:experimental:
+:icons: font
+:docodir: ./doco
+:sqldir: ./SQL
+:resultdir: ./Results
+:github: https://github.com/GeekMustHave/SQL-as-Second-Language
+:linkattrs:
+:seclinks:
+:title-logo-image: ./images/create-doco_optum-cover.png
+
+SQL as a Second Language (SASL) was a course that I taught many moons ago.
+It is being revisited now to help answer some SQL questions brought up by those whose are taking
+their SQL Skills to the next level.
+
+A PDF version of this web site is available at this link:readme.pdf[ Link, window="_blank"]
+
+[[top]]
+== Introduction
+
+This SQL As a Second Language version will use the Teradata SQL syntax.
+
+.Examples
+[quote, Bruce Lee,]
+A teacher, a really good teacher, is never a giver of truth; he is a guide, a pointer to truth
+
+=== Chinook Database
+
+The training database will be the Chinook database on music record sales.
+
+Reference: https://github.com/lerocha/chinook-database
+
+
+.Chinook Database Diagram
+image::chinook-diagram.png[Chinook Database Diagram, align='center']
+ 
+
+<<<< 
+== Questions
+
+[qanda]
+How can I get a count of the number of rows in some of the tables of a database?::
+  View this query <<tableCounts>>
+
+How can a get a list of the objects (Tables, View, Procedures) for a specific database?::
+  View This query <<dbObjects>>
+
+How can I find out the columns and metadata about a specific object (Table, View)?::   
+  View this query <<tableColumns>>
+
+How can I find where a specific column exist in a database?::
+  View this query <<findColumn>>
+
+How can I best use "Prompts" in SQL Assistant?::
+  unlinked
+
+
+== Queries
+
+<<<<
+[[tableCounts]]
+=== tableCounts
+
+.SQL Example
+[source,sql,linenums]
+----
+include::{sqldir}/0001-tableCounts.sql[]
+----
+<1> First query in union determine sizes and names of columns.
+<2> count(*)  is an aggregate function
+<3> Order by can be by the ordinal number of the column (Column 1 is tableName, Column 2 is Rows)
+
+SQL download link link:{sqldir}/0001-tableCounts.sql[ click here]
+
+.Results
+[options='header']
+,===
+include::{resultdir}/0001-tableCounts.csv[results]
+,===
+
+Back to <<top>>.
+
+
+<<<<
+[[dbObjects]]
+=== dbObjects
+
+.SQL Example
+[source,sql,linenums]
+----
+include::{sqldir}/0002-dbObjects.sql[]
+----
+
+SQL download link link:{sqldir}/0002-dbObjects.sql[ click here]
+
+.Results
+[options='header']
+,===
+include::{resultdir}/0002-dbObjects.csv[results]
+,===
+
+Back to <<top>>.
+
+
+<<<<
+[[tableColumns]]
+=== tableColumns
+  
+.SQL Example
+[source,sql]
+----
+include::{sqldir}/0003-TableColumns.sql[]
+----
+ 
+SQL Download link link:{sqldir}/0003-TableColumns.sql[ click here]
+ 
+.Results
+[options='header']
+,===
+include::{resultdir}/0003-tableColumns.csv[Results]
+,===
+
+NOTE: ColumnType defined the data type of a column.
+Reference: <<ColumnType>>
+ 
+Back to <<top>>.
+ 
+
+<<<<
+[[findColumn]]
+=== findColumn
+  
+.SQL Example
+[source,sql]
+----
+include::{sqldir}/0004-findColumns.sql[]
+----
+ 
+SQL Download link link:{sqldir}/0004-findColumns.sql[ click here]
+ 
+.Results
+[options='header']
+,===
+include::{resultdir}/0004-findColumns.csv[Results]
+,===
+ 
+NOTE: The ColumnType identifies the data type of the column.
+Reference: <<Column Type>>
+
+Back to <<top>>.
+ 
+
+
+
+ 
+<<<<
+== Reference
+
+
+
+=== Column Type
+
+ColumnType reference table.
+
+.ColumnType
+[cols="^3,8" options='header']
+,===
+include::{docodir}/column-type.csv[ColumnType]
+,===
+
+ 
+
+ 
+
+
+
+
+<<<<
+== Document History
+
+.Document History
+[cols='2,2,2,6' options='header']
+|===
+| Date  | Version | Author | Description
+| 12/21/2018 | V2.1d | JHRS | Added vsCode snippet for quick query insert
+                              added Reference section
+| 12/20/2018 | V2.1c | JHRS | Attempting standard document template
+| 12/17/2018 | V2.1b | JHRS |  Initial version
+|===
+
+
+
+
+////
+Internal Document notes:
+
+1. The SQL included code will not have line numbers, this is ok.
+
+2. Use the SQL callout syntax --<1> at the end of line, then add <1> This is what this does under the SQL code block
+
+3. Use directives for documents (docdir), SQL folder (sqldir} and Results folder {resultdir}, this allows for better separation os objects and allows for libraries to be redirected.
+
+4. Because of section numbering the standard section link <<section>> doesn't work.  So section headers that need to be an anchor need to have a [[section]] above the section
+
+
+
+
+////
+
+
+

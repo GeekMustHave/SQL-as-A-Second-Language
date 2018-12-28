@@ -1,0 +1,10 @@
+﻿Column Name,Type,Comment,Nullable,Format,Title,Max Length,Decimal Total Digits,Decimal Fractional Digits,Range Low,Range High,UpperCase,Table/View?,Default value,Char Type,IdCol Type,UDT Name,Temporal,Column Dictionary Name,Column SQL Name,Column Name UEscape,Dictionary Title,SQL Title,Title UEscape,UDT Dictionary Name,UDT SQL Name,UDT Name UEscape
+InvoiceId                     ,I ,NULL,N,-(10)9                        ,NULL,4,NULL,NULL,NULL,NULL,N,T,NULL,NULL,GD,NULL,N,InvoiceId,InvoiceId,,NULL,NULL,NULL,NULL,NULL,NULL
+CustomerId                    ,I ,NULL,N,-(10)9                        ,NULL,4,NULL,NULL,NULL,NULL,N,T,NULL,NULL,NULL,NULL,N,CustomerId,CustomerId,,NULL,NULL,NULL,NULL,NULL,NULL
+InvoiceDate                   ,DA,NULL,N,yyyy-mm-dd                    ,NULL,4,NULL,NULL,NULL,NULL,N,T,NULL,NULL,NULL,NULL,N,InvoiceDate,InvoiceDate,,NULL,NULL,NULL,NULL,NULL,NULL
+BillingAddress                ,CV,NULL,Y,X(70)                         ,NULL,70,NULL,NULL,NULL,NULL,N,T,NULL,1,NULL,NULL,N,BillingAddress,BillingAddress,,NULL,NULL,NULL,NULL,NULL,NULL
+BillingCity                   ,CV,NULL,Y,X(40)                         ,NULL,40,NULL,NULL,NULL,NULL,N,T,NULL,1,NULL,NULL,N,BillingCity,BillingCity,,NULL,NULL,NULL,NULL,NULL,NULL
+BillingState                  ,CV,NULL,Y,X(40)                         ,NULL,40,NULL,NULL,NULL,NULL,N,T,NULL,1,NULL,NULL,N,BillingState,BillingState,,NULL,NULL,NULL,NULL,NULL,NULL
+BillingCountry                ,CV,NULL,Y,X(40)                         ,NULL,40,NULL,NULL,NULL,NULL,N,T,NULL,1,NULL,NULL,N,BillingCountry,BillingCountry,,NULL,NULL,NULL,NULL,NULL,NULL
+BillingPostalCode             ,CV,NULL,Y,X(10)                         ,NULL,10,NULL,NULL,NULL,NULL,N,T,NULL,1,NULL,NULL,N,BillingPostalCode,BillingPostalCode,,NULL,NULL,NULL,NULL,NULL,NULL
+Total                         ,D ,NULL,N,---------.99                  ,NULL,8,10,2,NULL,NULL,N,T,NULL,NULL,NULL,NULL,N,Total,Total,,NULL,NULL,NULL,NULL,NULL,NULL

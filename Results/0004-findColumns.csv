@@ -1,0 +1,3 @@
+﻿ColumnName,DatabaseName,TableName,ColumnFormat,ColumnType,ColumnLength
+CustomerId                    ,Chinook                       ,Invoice                       ,-(10)9                        ,I ,4
+CustomerId                    ,Chinook                       ,Customer                      ,-(10)9                        ,I ,4
