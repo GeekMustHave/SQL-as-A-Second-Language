@@ -1,6 +1,6 @@
 = SQL as a Second Language
 John Schuster <John.schuster@PhoenixWorkgroup.com>
-v2.1f, 12/28/2018: Training Document
+v2.1k, 01/09/2019: Education Document
 :source-highlighter: coderay
 :coderay-css: class
 :coderay-linenums-mode: inline
@@ -37,6 +37,8 @@ This SQL As a Second Language version will use the Teradata SQL syntax.
 [quote, Bruce Lee,]
 A teacher, a really good teacher, is never a giver of truth; he is a guide, a pointer to truth
 
+
+<<<<
 === Chinook Database
 
 The training database will be the Chinook database on music record sales.
@@ -46,9 +48,41 @@ Reference: https://github.com/lerocha/chinook-database
 
 .Chinook Database Diagram
 image::chinook-diagram.png[Chinook Database Diagram, align='center']
+
+==== Chinook Business Rules
+
+. Each *Artist* has 1 or more *Albums*
+. Each *Album* has just 1 *Artist*
+. Each *Album* has 1 or more *Tracks*
+. Each *Track* has just 1 *Genre*
+. Each *Track* has just 1 *Media Type*
+. *Tracks* have playtime measured in milliseconds
+. *Tracks* have disk space measured in bytes
+. Each *Employee* has just 1 Manager, who is also an *Employee*
+. Each *Customer* has 1 or more *Invoices*
+. Each *Customer* has just 1 support rep who is an *Employee*
+. Each *Invoice* has 1 or more *Invoice Lines*
+. Each *Invoice Line* is related to just 1 *Track*
+. *Invoices* span 2016 - 2018
+. Each *Playlist* has 1 or more *Tracks*
+. Not all *Genre* have *Tracks*
  
 
-<<<< 
+=== Database Objects
+
+In this document the term `Database Object` is used to indicate one of the following Teradata database elements.
+
+* Table (All types)
+* View
+* Stored Procedure
+* Macro
+
+The reason for the term `Database Object` is to eliminate the confusion that can occur when objects change.  
+(IE: A view you created is materialized into a table, a query you wrote is changed into a store procedure)
+
+
+
+<<<<
 == Questions
 
 To ask a *New question* to be added to this list, please email it to john.schuster@PhoenixWorkgroup.com. 
@@ -75,8 +109,29 @@ How do I restrict the results by a column that `contains` some string?::
 How do I sort the results by multiple columns?::
     View this query <<joinQueryPartC>>      
 
+How do I use a sub-query to collect information?::
+    View this query <<derivedTable1PartA>>
+
+How do I use a sub-query to reduce or filter information?::
+    View this query <<derivedTable2Parta>>    
+
+When do I use the `having` clause?::
+    View this query <<derivedTable2Partd>>    
+
+When is it a good idea to use a `view`?::
+    Visit this query <<createView>>    
+
+When do I use a `inner` join versus an `outer` join?::
+    Visit this query <<joinTypes>>   
+
 How can I best use "Prompts" in SQL Assistant?::
   unlinked
+
+<<<<
+== SQL Overview
+
+
+
 
 
 == Queries
@@ -91,7 +146,7 @@ How can I best use "Prompts" in SQL Assistant?::
 include::{sqldir}/0001-tableCounts.sql[]
 ----
 <1> First query in union determine sizes and names of columns.
-<2> count(*)  is an aggregate function
+<2> count(\*)  is an aggregate function
 <3> Order by can be by the ordinal number of the column (Column 1 is tableName, Column 2 is Rows)
 
 SQL download link link:{sqldir}/0001-tableCounts.sql[ click here]
@@ -101,6 +156,14 @@ SQL download link link:{sqldir}/0001-tableCounts.sql[ click here]
 ,===
 include::{resultdir}/0001-tableCounts.csv[results]
 ,===
+
+
+NOTE: Your table counts may vary from this example as the Chinook database is updated to help with lesson content.
+
+.Commenting your SQL
+image::quote-comment.png[Commenting your SQL, align='center']
+ 
+
 
 Back to <<top>>.
 
@@ -122,6 +185,8 @@ SQL download link link:{sqldir}/0002-dbObjects.sql[ click here]
 ,===
 include::{resultdir}/0002-dbObjects.csv[results]
 ,===
+
+NOTE: Your database objects may vary from this example as the Chinook database is updated to help with lesson content.
 
 Back to <<top>>.
 
@@ -265,20 +330,92 @@ include::{resultdir}/0005c-joinQuery.csv[Results]
 ,===
  
 Back to <<top>>.
+
+
+
+<<<<
+[[joinTypes]]
+
+=== Join Types
+
+The relationships between database objects are defined using `join` statements.
+
+Two database objects are joined using one or more common columns between them.
+
+==== Inner Join
+
+An `Inner Join` can be used when you know there is at least one row in each of the two tables being joined.
+The business rules or the data model can help define when this relationship occurs.
+
+An `Inner Join` can be used to restrict/filter a large amount of rows from one table by a limited number of rows in the second table.
+
+An `Inner Join` can be used to replace a `where` clause with a list of values or a sub-query.
+The `Inner Join` can be much more performant than a `where` clause when there are a large number of restriction/filter rows.
+
+==== Outer Join
+
+* An `Outer Join` can be used when you know that there may no or is not one row in each of the tables being joined.
+* An `Outer Join` returns *ALL* of the rows from one table and any matching rows from the second table.
+* All `Outer Joins` has a direction, left outer join or right outer join.
+Think of it as one object on the left and the second object on the right.
+* The first `Select` object in the query is the `Left` object by default.
+* The outer joined object is the `right` object.
+* The direction of the outer join determines which object is the *All* object
+* A `Right Outer Join` returns *ALL* the rows from the object on the *RIGHT* and any matching rows from the left object.
+* A `Left Outer Join` returns *ALL* the rows from the object on the *LEFT* and any matching rows from the right object.
+* The `on` clause of the join does *NOT* indicate the direction of the join.
+  `on G.GenreID = T.GenreID` and `on T.GenreID = G.GenreID` 
+
+
+.Right Outer Join
+image::outerJoinRight.png[Right Outer Join, align='center']
+ 
+The same query above could be written reversing the order in which the objects are referenced to show a Left Outer join.
+
+.Left Outer Join
+image::outerJoinLeft.png[Left Outer Join, align='center']
+ 
+
+
+  
+.SQL Example
+[Join Types,sql]
+----
+include::{sqldir}/0009-joinTypes.sql[]
+----
+ 
+SQL Download link link:{sqldir}/0009-joinTypes.sql[ click here]
+ 
+.Results
+[options='header']
+,===
+include::{resultdir}/0009a-genreList.csv[Results]
+,===
+ 
+Back to <<top>>.
+
  
 
 <<<<
-[[derivedTablePartA]]
-=== derivedTable Part A
+[[derivedTable1PartA]]
+=== derivedTable 1 - Part A
 
 *Objective:* Get a list by Artist that includes number of albums, number of tracks, total artist minutes and average minutes per track.
 
-*Approach:* Use a set of derived queries to get the parts of the request and assemble them in the main query.
+*Approach:* Use a set of derived queries (aka sub-queries) to get the parts of the request and assemble the parts together in the main query.
+
+This collection approach is typically used when the parts being collected come from varied databases or putting them in a single query makes it difficult to compose the query.
+
+.derivedTable Collection
+image::derivedTablesCollection.png[Collection, align='center']
+
+Part A gets the number of albums by  artist. 
+It is the (Album Part) we need for the main query.
 
 NOTE: This request could be done using a single query.  The derived tables are being used here, 
 to show how they can be used to build parts of the results, that are assembled in a main query later.
 
-This query gets the album count by artist.
+NOTE: Derived Tables are also know as sub-queries.  
   
   
 .SQL Example
@@ -305,26 +442,562 @@ NOTE: Only 20 rows of the result being shown.  The result set has 204 rows, one 
 Back to <<top>>.
  
  
+<<<<
+[[derivedTable1PartB]]
+=== derived Table 1 -Part B
+
+*Objective:* Get a list by Artist that includes number of albums, number of tracks, total artist minutes and average minutes per track.
+
+*Approach:* Use a set of derived queries (aka sub-queries) to get the parts of the request and assemble the parts together in the main query.
+
+This collection approach is typically used when the parts being collected come from varied databases or putting them in a single query makes it difficult to compose the query.
+
+.derivedTable Collection
+image::derivedTablesCollection.png[Collection, align='center']
+
+This part gets the number of tracks by artist and calculates the number of minutes total and average minutes per track from the milliseconds.  It is the second part (Tracks Part) we need for the main query.
+
+NOTE: This request could be done using a single query.  The derived tables are being used here, 
+to show how they can be used to build parts of the results, that are assembled in a main query later.
+
+NOTE: Derived Tables are also know as sub-queries.
+  
+.SQL Example
+[source,sql]
+----
+include::{sqldir}/0006b-derivedTable.sql[]
+----
+ 
+
+SQL Download link link:{sqldir}/0006a-derivedTable.sql[ click here]
+ 
+.Results
+[options='header']
+,===
+include::{resultdir}/0006b-derivedTable.csv[Results,lines=1..20]
+,===
+<1> This calculated or derived field is the sum of time (Milliseconds) for all tracks for this artist.
+Dividing by 60,000.00 translates this into minutes.  
+<2> This calculated or derived field is the average of the time (Milliseconds) for all tracks for this artist.
+Dividing by 60,000.00 translate this into minutes.
+
+NOTE: Notice that the division was done using a fractional number 60000.00 which returns the results with two decimal points of precision.  If we had used an integer number 60000 we would have gotten an whole number back and lost the two decimal points of precision.
+
+NOTE: Only 20 rows of the result being shown.  The result set has 204 rows, one for each artist.
+ 
+Back to <<top>>.
+
+
+
+<<<<
+[[derivedTable1PartC]]
+=== derivedTable 1 - Part C
+
+*Objective:* Get a list by Artist that includes number of albums, number of tracks, total artist minutes and average minutes per track.
+
+*Approach:* Use a set of derived queries (aka sub-queries) to get the parts of the request and assemble the parts together in the main query.
+
+This collection approach is typically used when the parts being collected come from varied databases or putting them in a single query makes it difficult to compose the query.
+
+.derivedTable Collection
+image::derivedTablesCollection.png[Collection, align='center']
+
+This part assembles the album part (Part A) and tracks part (Part B) with artist information for the main or final query.
+
+  
+NOTE: This request could be done using a single query.  The derived tables are being used here, 
+to show how they can be used to build parts of the results, that are assembled in a main query later.
+
+NOTE: Derived Tables are also know as sub-queries.  
+
+  
+.SQL Example
+[source,sql]
+----
+include::{sqldir}/0006c-derivedTable.sql[]
+----
+<1> A column from the derived table (sub-query) being used in the result
+<2> CAST being used to reformat a decimal number to 5,2.  Five digits total, two digits precision
+<3> The beginning of a derived table (sub-query) starts with a `(`
+<4> The end of the derived table (sub-query) is marked with a `)` and a name for the derived table.
+The derived table name is used to qualify the use of the columns in the main query.
+<5> This calculated or derived field is the sum of time (Milliseconds) for all tracks for this artist.
+Dividing by 60,000.00 translates this into minutes.  
+<6> This calculated or derived field is the average of the time (Milliseconds) for all tracks for this artist.
+Dividing by 60,000.00 translate this into minutes.
+
+
+
+SQL Download link link:{sqldir}/0006c-derivedTable.sql[ click here]
+ 
+.Results
+[options='header']
+,===
+include::{resultdir}/0006c-derivedTable.csv[Results,lines=1..20]
+,===
+
+
+NOTE: Only 20 rows of the result being shown.  The result set has 204 rows, one for each artist.
+
+.Multiple SQL Selects
+image::quote-single.png[Multiple SQL Selects, align='center']
+ 
+
+ 
+Back to <<top>>.
+ 
+
+<<<<
+[[derivedTable2Parta]]
+=== derivedTable 2 - Part A
+
+*Objective:* The *Top Order Tracks* is a list of tracks from orders in a year that are $5 or more.  
+What other tracks across all orders share a track from the *Top Order Tracks* list?
+
+*Approach:* Use a set of derived tables (sub-queries) to create progressive filters to get the result
+
+* Part A - List of invoices for one year that are $5 or more
+* Part B - Get the list of tracks for the invoices in the Part A, this is the *Top Order Tracks* list
+* Part C - Find all invoices that have a track from Part B the *Top order Tacks* list.
+* Part D - Find all tracks, across all invoices, with a match in the *Top Order List* and count them
+
+.derivedTable Filter
+image::derivedTablesFilters.png[Filters]
+
+NOTE: This request could be done using a single query.  The derived tables are being used here, 
+to show how they can be used as a  filter or reduce the number of rows in the result.
+
+NOTE: Derived Tables are also know as sub-queries.
+  
+.SQL Example
+[source,sql]
+----
+include::{sqldir}/0007a-derivedTable.sql[]
+----
+<1> Fields used during the testing of the derived table (sub-query)
+two hypens `--` used to comment out a line
+<2> `between` function requires starting value `and` ending value
+<3> `date` indicates a date field, Teradata standard format is `yyyy-mm-dd`
+ 
+SQL Download link link:{sqldir}/0007a-derivedTable.sql[ click here]
+ 
+.Results
+[options='header']
+,===
+include::{resultdir}/0007a-derivedTable.csv[Results,lines=1..20]
+,===
+
+NOTE: Only 20 rows of the result being shown.  The result set has 35 rows, one for each invoice of $5 or more.
+
+Back to <<top>>.
+ 
+
+<<<<
+[[derivedTable2Partb]]
+=== derivedTable 2 - Part B
+
+*Objective:* 
+
+*Approach:* 
+
+.derivedTable Filter
+image::derivedTablesFilters.png[Filters]
+
+NOTE: This request could be done using a single query.  The derived tables are being used here, 
+to show how they can be used as a  filter or reduce the number of rows in the result.
+
+NOTE: Derived Tables are also know as sub-queries.
+  
+.SQL Example
+[source,sql]
+----
+include::{sqldir}/0007b-derivedTable.sql[]
+----
+<1> Derived Table (Sub-query) begins with a `(` then the sub-query SQL
+<2> `between` function requires starting value `and` ending value
+<3> `date` indicates a date field, Teradata standard format is `yyyy-mm-dd`
+<4> The end of the derived table (sub-query) is marked with a `)` and a name for the derived table `RI` Reduced Invoices.
+The derived table name is used to qualify the use of the columns in the main query.
+<5> `DISTINCT` used to elminate duplicates, applied to the entire result set
+ 
+SQL Download link link:{sqldir}/0007b-derivedTable.sql[ click here]
+ 
+.Results
+[options='header']
+,===
+include::{resultdir}/0007b-derivedTable.csv[Results,lines=1..20]
+,===
+
+
+NOTE: Only 20 rows of the result being shown.  The result set has 345 rows, one for each track of a 2018 morder of $5 or more.
+
+Back to <<top>>.
+
+<<<<
+[[derivedTable2Partc]]
+=== derivedTable 2 - Part C
+
+*Objective:* 
+
+*Approach:* 
+
+.derivedTable Filter
+image::derivedTablesFilters.png[Filters]
+
+NOTE: This request could be done using a single query.  The derived tables are being used here, 
+to show how they can be used as a  filter or reduce the number of rows in the result.
+
+NOTE: Derived Tables are also know as sub-queries.
+  
+.SQL Example
+[source,sql]
+----
+include::{sqldir}/0007c-derivedTable.sql[]
+----
+<1> `DISTINCT` used to eliminate duplicates, applied to the entire result set
+<2>  Derived Table (Sub-query) begins with a `(` then the sub-query SQL
+<3>  Derived Table (Sub-query) begins with a `(` then the sub-query SQL
+<4>  The end of the derived table (sub-query) is marked with a `)` and a name for the derived table `RI` Reduced Invoices.
+The derived table name is used to qualify the use of the columns in the main query.
+<5> The end of the derived table (sub-query) is marked with a `)` and a name for the derived table `TL` Track List.
+The derived table name is used to qualify the use of the columns in the main query.
+<6> Filter for only tracks that match tracks in the `TL` trackList *Top OrderTrack* list
+<7> `between` function requires starting value `and` ending value
+<8> `date` indicates a date field, Teradata standard format is `yyyy-mm-dd`
+
+
+ 
+SQL Download link link:{sqldir}/0007c-derivedTable.sql[ click here]
+ 
+.Results
+[options='header']
+,===
+include::{resultdir}/0007c-derivedTable.csv[Results,lines=1..20]
+,===
+
+
+NOTE: Only 20 rows of the result being shown.  The result set has ??? rows, one for each track of a 2018 morder of $5 or more.
+
+Back to <<top>>.
+
+
+<<<<
+[[derivedTable2Partd]]
+=== derivedTable 2 - Part D
+
+*Objective:* 
+
+*Approach:* 
+
+.derivedTable Filter
+image::derivedTablesFilters.png[Filters]
+
+NOTE: This request could be done using a single query.  The derived tables are being used here, 
+to show how they can be used as a  filter or reduce the number of rows in the result.
+
+NOTE: Derived Tables are also know as sub-queries.
+  
+.SQL Example
+[source,sql]
+----
+include::{sqldir}/0007d-derivedTable.sql[]
+----
+<1> column alias
+<2> derived column with column alias
+<3> The beginning of a derived table (sub-query) starts with a `(`
+<4> `DISTINCT` used to eliminate duplicates, applied to the entire result set
+<5> The beginning of a derived table (sub-query) starts with a `(`
+<6> The beginning of a derived table (sub-query) starts with a `(`
+<7> `between` function requires starting value `and` ending value
+<8> `date` indicates a date field, Teradata standard format is `yyyy-mm-dd`
+<9> The end of the derived table (sub-query) is marked with a `)` and a name for the derived table `RI` Reduced Invoices.
+The derived table name is used to qualify the use of the columns in the main query.
+<10> The end of the derived table (sub-query) is marked with a `)` and a name for the derived table `TL` Track List.
+The derived table name is used to qualify the use of the columns in the main query.
+<11> The end of the derived table (sub-query) is marked with a `)` and a name for the derived table `SI` Special Invoices.
+The derived table name is used to qualify the use of the columns in the main query.
+<12> `Group by` required for any column that is not an aggregate column
+<13> `trackCount` is a column alias of a derived column (Count) used here for sorting
+<14> `trackName` is a column alias
+<15> `having` is a filter for a aggregate column
+
+ 
+SQL Download link link:{sqldir}/0007d-derivedTable.sql[ click here]
+ 
+.Results
+[options='header']
+,===
+include::{resultdir}/0007d-derivedTable.csv[Results,lines=1..20]
+,===
+
+NOTE: Only 20 rows of the result being shown.  The result set has 88 rows, one for each track of an order with a matching track in the *Top Order Track* list.
+
+Back to <<top>>.
+
+
+
+
+
+<<<<
+[[createView]]
+
+=== Create View
+
+A view is a database object  is built from other database objects like tables and views.
+
+Views can help give you a simpler viewable version of a complex query.
+
+Views can help you reuse a standard copy of a database object across queries.
+
+Unlike a table which takes up permanent space for its data, a view does not take up permanent space.
+
+
+==== Example
+
+In the Chinook database many of the queries require comprehensive Album information.
+
+To get the comprehensive information we need data from five different tables.
+
+.vAlbum Relationships
+image::vAlbumRelationships.png[vAlbum Relationships, align='center']
  
 
 
+  
+.SQL Example
+[source,sql]
+----
+include::{sqldir}/0100-create-vAlbumView.sql[]
+----
+<1> The first time a view is built use the `Create` statement
+<2> To change the view use the `update` statement
+<3> Column Alias in order avoid confusion with the field `name`
+<4> Derived Column (aka Calculated Column) notice the 60000.00 has two zeros of precision in order to return a decimal number
+<5> Derived Column (aka Calculated Column) notice the 1048576.00 has two zeros of precision in order to return a decimal number
+<6> Table alias, each joined table has it own unique table alias.  
+NOTE: This example the `Album` table was chosen as the main table of the view.
+ 
+SQL Download link link:{sqldir}/0100-create-vAlbumView.sql[ click here]
+ 
+If you didn't create the view then you may not know the column names of the view.
+
+To display a list of the `vAlbum` view columns use
+
+   help view vAlbum  
+
+The column list of the view will be returned.
+
+.Display View Columns
+image::vAlbumHelp.png[Display View Columns, align='center']
+ 
+This column list may be sufficient enough for you to use the view in your work.
+
+If you need more knowledge about how the vAlbum view was built use
+
+  show view vAlbum
+
+The SQL statement used to create the vAlbum view will be returned.
+
+.Display View SQL
+image::vAlbumShow.png[Display View SQL, align='center']
+ 
+NOTE: Any bulk comments `/* comments \*/` will have been stripped out by Teradata when the view is created or updated.
+
+.Longest Query Rewards
+image::quote-longest.png[Longest Query Rewards, align='center']
+ 
+
+
+
+ 
+Back to <<top>>.
+ 
+
+
+<<<<
+== Tips 
+
+This tips can  be considered suggestions to make developing SQL a little bit easier.
+
+=== Aggregate Functions
+
+These functions are  used to compress or limit the number of rows into a single row.
+
+* `Count(?)` Counts the number of rows, duplicates included in the count.
+* `Count Distinct(?)` Count the number of rows, duplicates only counted once.
+* `Sum(?)` Sums the values in the column, the column must be a numeric column.
+
+=== Column Alias
+
+* Column alias help to give meaningful, non conflicting names. 
+* Good practice, alias column names use lowerUpper naming 
+to identify them as alias (ie: albumCount, salesDollars, genreAverage)
+* Good practice, try to use the same column alias across all queries.
+
+
+=== Dates
+
+* Default Teradata date format is `yyyy-mm-dd`
+* Convert a string into a date with `DATE` function  (DATE '2018-01-01')
+* Extract parts of a date with the `EXTRACT` function (EXTRACT MONTH I.InvoiceDate)
+
+
+=== Derived Tables (Sub-Queries)
+
+* Start with a regular query until you get the results you need.
+* Enclose the regular query in `(...)` and assign a table alias name.
+* Good practice is to start a derived table with a `(` on a line by itself.
+* Good practice is to end a derived table with a `( as XX` on a line by itself
+* Good practice is to indent the derived table within the `(` and `) as XX`
+
+
+
+=== Formatting / Conversion
+
+* `Cast(x,y)` can be used to reduce number of digits of precision.
+
+X=Number of digits on both sides of the decimal point totaled (ie: 999.99 X=5)
+
+Y=Number of digits of precision, number og digits to the right of the decimal point. 
+(ie: 999.99 Y=2) 
+
+
+
+=== Naming practice
+
+* Good practice, System Generated Primary Index column name  
+include a `ID` suffix (AlbumID, TrackID).
+* Good practice, Primary Key and Foreign Key join columns 
+should use the same name.
+* Short descriptive column names are better than abbreviations.
+
+
+=== Join
+
+* The `Left` table is defined by the first `Select` in the query.
+* The `Right` table is defined by the object in the `Join` clause.
+* The `Inner Join` returns results where there is a matching column in both Left and Right tables.
+* The `Outer Join` returns *ALL* results from one table and any matching results from the other table.
+* The *ALL* table is determined by the direction of the `Outer join` (Left Outer Join, Right Outer Join).
+
+
+=== Order By
+
+* Can use actual column name (T.Milliseconds, I.InvoiceDate), column alias name (trackCount, genreName), or ordinal position (1,2,3,4).
+* Good practice is to avoid using ordinal position because as queries change the number and order of select columns, the results can become invalid.
+
+
+=== Select columns
+
+* Use single quote `'` to denote text.
+* Use double-quotes `"` for renaming objects.
+* Indent columns selected. 
+* Limit one column per row.
+* Put commas at the beginning of the column name, not at the end, starting on the 2nd column.
+
+.Not recommended
+[source, sql]
+----
+Select
+    T.Name as trackName,
+    I.InvoiceDate,
+    AL.Name as albumName,
+    count(T.TackID) as trackCount,
+----
+
+.Recommended
+[source, sql]
+----
+Select
+    T.Name as trackName
+    ,I.InvoiceDate
+    ,AL.Name as albumName
+    ,count(T.TackID) as trackCount
+----
+
+
+=== Table Alias
+
+* Table alias shorten the typing needed to complete the query, 
+1-3 character alias recommended.
+* Use the same table alias across all queries.
+* Good practice is to have table alias used everywhere in the query, including Select, From, Join, Where, Group By and Order By.
+* Good Practice is to have table alias be uppercase (IE: I, IL, T, G)
+
+
+
+=== Teradata Specific
+
+* Teradata will look for any `Primary Index` specified in the DDL. 
+*  If a `Primary Index` is not specified, it will then look for `Primary Key` constraint in DDL
+ for making it `Primary Index`.
+
+
+=== Union
+
+* UNION allows joining of multiple queries
+* Each queries must have same number and data type of columns.
+* First query in union determine sizes and names of columns.
+* Start small and build on to the Union query.
+
+
+=== Where
+
+* Good practice, put `and` where clauses on separate lines
+* Good practice, put `or` where clause on single line
+* Use `(..)` to help clarify logical groupings
+
+
+<<<<
+== Contact Information
+
+Author contact Information
+
+*Email:* schusterj@Michigan.gov
+
+*Email:* john.schuster@PhoenixWorkgroup.com
+
+*Phone:*  517-927-7400
+
+NOTE: Please provide any feedback, corrections or suggestions to the author.  The folks providing the most anount of feedback will win prizes.
 
 
  
 <<<<
 == Reference
 
+=== Teradata links
+
+Documentation: https://docs.teradata.com/landing-page/[https://docs.teradata.com/landing-page/, window='_blank']
+
+Forum: https://community.teradata.com/[https://community.teradata.com/, window='_blank']
+
+SQL Assistant: https://bit.ly/2LYpXxB[window='_blank']
+
+SQL Introduction: https://bit.ly/2Fhxp5C[window='_blank']
+
+Stack Overflow (Teradata Forum): https://stackoverflow.com/questions/tagged/teradata[https://stackoverflow.com/questions/tagged/teradata, window='_blank']
+
+
+
+
+
 
 
 === Column Type
 
 ColumnType reference table.
+Reference: http://developer.teradata.com/doc/connectivity/tdnetdp/14.00/webhelp/DataTypeMappings.html
 
 .ColumnType
 [cols="^3,8" options='header']
 ,===
 include::{docodir}/column-type.csv[ColumnType]
 ,===
+
+ 
+
+ 
 
  
 
@@ -340,6 +1013,13 @@ include::{docodir}/column-type.csv[ColumnType]
 [cols='2,2,2,6' options='header']
 |===
 | Date  | Version | Author | Description
+| 01/10/2019 | V2.1M | JHRS | Moved Tips from SQL queries to make them smaller
+                              and avoid sync issues
+| 01/09/2019 | v2.1k | JHRS | Added View and join types, plaques
+| 01/08/2018 | V2.1j | JHRS | Updated Chinook introduction
+| 01/03/2019 | V2.1h | JHRS | Added derived Table for Filters
+                              Added diagrams for derived tables
+| 01/02/2019 | V2.1g | JHRS | Updated derived query for collections
 | 12/28/2018 | V2.1f | JHRS | Added derivedQuery from archived
 | 12/27/2018 | V2.1e | JHRS | Added joinQuery set from archive
 | 12/21/2018 | V2.1d | JHRS | Added vsCode snippet for quick query insert

@@ -1,0 +1,30 @@
+NOTE: This is the standard list of topics to use in the header of the Teradata queries.
+
+
+==== Topics 
+
+* Aggregates (Count, Sum, Min, Max, Avg, etc)
+* Between function
+* Cast for formatting
+* Column Alias, rename a column
+* Comments, information or debugging
+* Date functions
+* Derived Table (Sub-Query)
+* Group by, required for non-aggregate columns
+* Having, filter for aggregate column
+* Join objects (Table, View, Derived Table) together
+* Like %Search% similar to `contains`
+* OLAP function
+* Order by,  also known as sorting
+* Where, results filter or restriction
+* Table alias, standardize and simplify table/view names
+* Teradata Specific syntax
+* Union, multiple select queries stacked 
+
+
+
+
+
+
+
+

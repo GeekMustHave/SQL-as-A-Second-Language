@@ -1,16 +1,12 @@
 ﻿/* 
 === joinQuery - Multiple Table join with result restriction
    
-==== TOPICS
+==== Topics 
 
-* This query joins multiple table together
-   
-==== TIPS
-
-* Table alias shorten the typing needed to complete the query
-1-2 character alias recommended.
-* Column alias help to give meaningful, non conflicting names. 
-* Results being restricted with a a `where` clause
+* Column Alias, rename a column
+* OLAP function
+* Where, results filter or restriction
+* Table alias, standardize and simplify table/view names
 */
 
 Select 

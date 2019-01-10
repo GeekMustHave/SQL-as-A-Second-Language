@@ -3,23 +3,14 @@
 
 Part B -Build the query that will become one of the derived tables
    
-==== TOPICS
+==== Topics 
 
-* Count the number of tracks, total minutes, and average minutes per track
-* Aggregation functions to be used for count and avg
-
-   
-==== TIPS
-
-* Table alias shorten the typing needed to complete the query
-1-3 character alias recommended.
-* Column alias help to give meaningful, non conflicting names. 
-Good practice is to have table alias used everywhere if used
-* Coulmns for join must match in data type and size
-* Good practice is that System Generated Primary Key column name be named with `ID` at the end
-* Primary Key and Foreign Key matching columns should usew the same name
-* Alias column names use lowerUpper naming to identify them as alias (trackCount, totalMinutes, avgMinutes)
- 
+* Aggregates (Count, Sum, Min, Max, Avg, etc)
+* Cast for formatting
+* Column Alias, rename a column
+* Group by, required for non-aggregate columns
+* Join objects (Table, View, Derived Table) together
+* Table alias, standardize and simplify table/view names
 */
 
 

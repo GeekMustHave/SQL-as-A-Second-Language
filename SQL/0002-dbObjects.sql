@@ -1,11 +1,12 @@
 ﻿/* 
 === dbObjects - Get a list of all the objects in a specific database
    
-==== TOPICS
+==== Topics 
 
-* This is a Teradata specific command
+* Teradata Specific syntax
+
    
-==== TIPS
+==== Special Note
 
 * Change the database name from `chinook` to the database you are interested in 
 */

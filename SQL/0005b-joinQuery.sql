@@ -3,19 +3,13 @@
 
 Part B - Add the second table for the Join
    
-==== TOPICS
+==== Topics 
 
-* This query joins multiple table together
-   
-==== TIPS
-
-* Table alias shorten the typing needed to complete the query
-1-2 character alias recommended.
-* Column alias help to give meaningful, non conflicting names. 
-* Coulmns for join must match in data type and size
-* Good practice is that System Generated Primary Key column name be named with `ID` at the end
-* Primary Key and Foreign Key matching columns should usew the same name
-
+* Column Alias, rename a column
+* Derived Table (Sub-Query)
+* Join objects (Table, View, Derived Table) together
+* Where, results filter or restriction
+* Table alias, standardize and simplify table/view names
 */
 
 Select 

@@ -3,26 +3,13 @@
 
 Part C - Add the third table and composer restriction
    
-==== TOPICS
+==== Topics 
 
-* List of all the `Aerosmith` tracks that `Joe Perry` was one of the cpmposers
-* This query joins multiple tables together
-* Primary and Foreign keys are system generated and always exist
-   
-==== TIPS
-
-* Table alias shorten the typing needed to complete the query
-1-3 character alias recommended.
-* Column alias help to give meaningful, non conflicting names. 
-Good practice is to have table alias used everywhere if used
-* Coulmns for join must match in data type and size
-* Good practice is that System Generated Primary Key column name be named with `ID` at the end
-* Primary Key and Foreign Key matching columns should usew the same name
-* `like` used to find a column that contains some string`, note the % indicating any number of characters before/after
-* Order by can use either 1. Actual column names, 2. Alias column names, 3. Ordinal position is results list
-* Alias column names use lowerUpper naming to identify them as alias
-only works because original names are camelback naming.
- 
+* Column Alias, rename a column
+* Join objects (Table, View, Derived Table) together
+* Like %Search% similar to `contains`
+* Order by,  also known as sorting
+* Where, results filter or restriction
 */
 
 Select 

@@ -1,0 +1,16 @@
+﻿ColumnName,DatabaseName,TableName,ColumnFormat,ColumnType,ColumnLength
+AlbumId                       ,Chinook                       ,vAlbum                        ,NULL,NULL,NULL
+AlbumTitle                    ,Chinook                       ,vAlbum                        ,NULL,NULL,NULL
+ArtistId                      ,Chinook                       ,vAlbum                        ,NULL,NULL,NULL
+artistName                    ,Chinook                       ,vAlbum                        ,NULL,NULL,NULL
+TrackId                       ,Chinook                       ,vAlbum                        ,NULL,NULL,NULL
+titleName                     ,Chinook                       ,vAlbum                        ,NULL,NULL,NULL
+Composer                      ,Chinook                       ,vAlbum                        ,NULL,NULL,NULL
+Milliseconds                  ,Chinook                       ,vAlbum                        ,NULL,NULL,NULL
+minutes                       ,Chinook                       ,vAlbum                        ,NULL,NULL,NULL
+SizeBytes                     ,Chinook                       ,vAlbum                        ,NULL,NULL,NULL
+mbSize                        ,Chinook                       ,vAlbum                        ,NULL,NULL,NULL
+GenreId                       ,Chinook                       ,vAlbum                        ,NULL,NULL,NULL
+genreName                     ,Chinook                       ,vAlbum                        ,NULL,NULL,NULL
+MediaTypeId                   ,Chinook                       ,vAlbum                        ,NULL,NULL,NULL
+mediaTypeName                 ,Chinook                       ,vAlbum                        ,NULL,NULL,NULL

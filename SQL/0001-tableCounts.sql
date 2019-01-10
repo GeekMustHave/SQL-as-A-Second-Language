@@ -1,23 +1,12 @@
 ﻿/* 
 === tableCounts - Count rows in all Chinook tables 
    
-==== TOPICS
+==== Topics 
 
-* Aggragate function count.
-* UNION multiple queries.
-* Sorting aka order by.
-   
-==== TIPS
-
-* Use single quote (') to denote text.
-* Use doble-quotes for renaming objects.
-* Indent and one column per row.
-* Put commas at the begining of the 2nd column.
-* UNION allows joining of multiple queries, same number and data type of column.
-* First query in union determine sizes and names of columns.
-* Start small and build on to query.
-* Order by can be by the ordinal number of the column
-  (Column 1 is tableName, Column 2 is Rows)
+* Aggregates (Count, Sum, Min, Max, Avg, etc)
+* Column Alias, rename a column
+* Order by,  also known as sorting
+* Union, multiple select queries stacked 
 */
 
 Select 
