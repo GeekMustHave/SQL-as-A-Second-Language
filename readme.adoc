@@ -1,6 +1,6 @@
 = SQL as a Second Language
 John Schuster <John.schuster@PhoenixWorkgroup.com>
-v2.1k, 01/09/2019: Education Document
+v2.1n, 01/11/2019: Learning Guide
 :source-highlighter: coderay
 :coderay-css: class
 :coderay-linenums-mode: inline
@@ -45,7 +45,6 @@ The training database will be the Chinook database on music record sales.
 
 Reference: https://github.com/lerocha/chinook-database
 
-
 .Chinook Database Diagram
 image::chinook-diagram.png[Chinook Database Diagram, align='center']
 
@@ -60,12 +59,15 @@ image::chinook-diagram.png[Chinook Database Diagram, align='center']
 . *Tracks* have disk space measured in bytes
 . Each *Employee* has just 1 Manager, who is also an *Employee*
 . Each *Customer* has 1 or more *Invoices*
-. Each *Customer* has just 1 support rep who is an *Employee*
+. Each *Customer* has just 1 `support rep` who is an *Employee*
 . Each *Invoice* has 1 or more *Invoice Lines*
 . Each *Invoice Line* is related to just 1 *Track*
-. *Invoices* span 2016 - 2018
+. *Invoices* span 2014 - 2018
 . Each *Playlist* has 1 or more *Tracks*
 . Not all *Genre* have *Tracks*
+. Not all *Employees* who are `support reps` have customers
+
+NOTE: The `Chinook` database will be known as the `DCH_Training` located on the `DRBC` server. 
  
 
 === Database Objects
@@ -80,8 +82,30 @@ In this document the term `Database Object` is used to indicate one of the follo
 The reason for the term `Database Object` is to eliminate the confusion that can occur when objects change.  
 (IE: A view you created is materialized into a table, a query you wrote is changed into a store procedure)
 
+=== SQL Query Tools
+
+There are a variety of SQL tools that can be used to develop and utilize the Teradata database.
+
+* Teradata SQL Assistant - Included in the Teradata Tools and Utilities installation package
+* Teradata Studio - Available as a separate download
+* Database 5 Pro - Intuitive multiple database manager, portable (Authors preference)
+* DBeaver - Free, open source, multi-platform universal database tool
+
+NOTE: Many of the screen captures will be done using Database 5 Pro.
 
 
+
+
+////
+**********************************************************************
+   ____                  _   _                 
+  / __ \                | | (_)                
+ | |  | |_   _  ___  ___| |_ _  ___  _ __  ___ 
+ | |  | | | | |/ _ \/ __| __| |/ _ \| '_ \/ __|
+ | |__| | |_| |  __/\__ \ |_| | (_) | | | \__ \
+  \___\_\\__,_|\___||___/\__|_|\___/|_| |_|___/                                            
+***********************************************************************
+////
 <<<<
 == Questions
 
@@ -106,6 +130,9 @@ How do I Join two tables together?::
 How do I restrict the results by a column that `contains` some string?::
     View this query <<joinQueryPartC>>  
 
+How do I select or restrict a date column by month, day or year?::
+    View this query <<dateFilters>>
+
 How do I sort the results by multiple columns?::
     View this query <<joinQueryPartC>>      
 
@@ -113,10 +140,10 @@ How do I use a sub-query to collect information?::
     View this query <<derivedTable1PartA>>
 
 How do I use a sub-query to reduce or filter information?::
-    View this query <<derivedTable2Parta>>    
+    View this query <<derivedTable2A>>    
 
 When do I use the `having` clause?::
-    View this query <<derivedTable2Partd>>    
+    View this query <<derivedTable2PartD>>    
 
 When is it a good idea to use a `view`?::
     Visit this query <<createView>>    
@@ -124,19 +151,55 @@ When is it a good idea to use a `view`?::
 When do I use a `inner` join versus an `outer` join?::
     Visit this query <<joinTypes>>   
 
+How do a do a Running Total (Cumulative Sum)?::
+    View this query <<dateFilters>>   
+
+How can a do a ranking of the results?::
+
+
 How can I best use "Prompts" in SQL Assistant?::
   unlinked
 
+
+
+
+
+////
+************************************************************
+   ____                  _           
+  / __ \                (_)          
+ | |  | |_   _  ___ _ __ _  ___  ___ 
+ | |  | | | | |/ _ \ '__| |/ _ \/ __|
+ | |__| | |_| |  __/ |  | |  __/\__ \
+  \___\_\\__,_|\___|_|  |_|\___||___/
+                                     
+************************************************************
+////
 <<<<
-== SQL Overview
-
-
-
-
-
 == Queries
 
+The queries in this document are not presented in any particular order.
+
+These queries were constructed to answer specific questions from the students.
+
+Whenever possible the actual SQL query statement is shown and can be downloaded. 
+These queries can be the starting point for learning how to perform some function.
+
+There are numbered call-outs on the SQL queries which are defined at the end of the query.
+These call-outs are used to help highlight techniques or direct attention to subject matter.
+
+The results of each query are shown and may vary slightly from the edition of the Chinook database you are using.
+
+NOTE: If the query does not contain an `order by` clause then the results come back in a random order.
+TThis is normal for the Teradata database.
+
+
+
+
 <<<<
+//// 
+******************  tableCounts   tableCounts   tableCounts   tableCounts   
+////
 [[tableCounts]]
 === tableCounts
 
@@ -146,7 +209,7 @@ How can I best use "Prompts" in SQL Assistant?::
 include::{sqldir}/0001-tableCounts.sql[]
 ----
 <1> First query in union determine sizes and names of columns.
-<2> count(\*)  is an aggregate function
+<2> count(*)  is an aggregate function
 <3> Order by can be by the ordinal number of the column (Column 1 is tableName, Column 2 is Rows)
 
 SQL download link link:{sqldir}/0001-tableCounts.sql[ click here]
@@ -157,18 +220,21 @@ SQL download link link:{sqldir}/0001-tableCounts.sql[ click here]
 include::{resultdir}/0001-tableCounts.csv[results]
 ,===
 
-
 NOTE: Your table counts may vary from this example as the Chinook database is updated to help with lesson content.
 
 .Commenting your SQL
 image::quote-comment.png[Commenting your SQL, align='center']
- 
-
 
 Back to <<top>>.
 
 
+
+
+
 <<<<
+//// 
+******************  dbObjects    dbObjects    dbObjects    dbObjects    
+////
 [[dbObjects]]
 === dbObjects
 
@@ -191,7 +257,12 @@ NOTE: Your database objects may vary from this example as the Chinook database i
 Back to <<top>>.
 
 
+
+
 <<<<
+//// 
+******************  tableColumns    tableColumns    tableColumns    tableColumns    tableColumns    
+////  
 [[tableColumns]]
 === tableColumns
   
@@ -215,6 +286,12 @@ Reference: <<ColumnType>>
 Back to <<top>>.
  
 
+
+
+
+//// 
+******************  findColumns   findColumns   findColumns   findColumns       
+////    
 <<<<
 [[findColumn]]
 === findColumn
@@ -239,6 +316,12 @@ Reference: <<Column Type>>
 Back to <<top>>.
  
 
+
+
+
+//// 
+******************  joinQueryA   joinQueryA  joinQueryA  joinQueryA  joinQueryA         
+////    
 <<<<
 [[joinQueryPartA]]
 === joinQuery Part A
@@ -267,7 +350,13 @@ include::{resultdir}/0005a-joinQuery.csv[Results]
  
 Back to <<top>>.
  
- 
+
+
+
+
+//// 
+******************  joinQueryB   joinQueryB  joinQueryBA  joinQueryBA  joinQueryB         
+////   
 <<<<
 [[joinQueryPartB]]
 === joinQuery Part B
@@ -297,6 +386,13 @@ include::{resultdir}/0005b-joinQuery.csv[Results]
  
 Back to <<top>>.
 
+
+
+
+
+//// 
+******************  joinQueryC   joinQueryC  joinQueryC  joinQueryC  joinQueryC         
+////   
 <<<<
 [[joinQueryPartC]]
 === joinQuery Part C
@@ -375,27 +471,144 @@ The same query above could be written reversing the order in which the objects a
 .Left Outer Join
 image::outerJoinLeft.png[Left Outer Join, align='center']
  
+The following set of queries show how the results of a query can change due to the direction of the `Outer Join`.
 
+//// 
+***********************************************************************
+GENRE LIST    GENRE LIST    GENRE LIST    GENRE LIST    GENRE LIST    
+***********************************************************************  
+////
 
-  
-.SQL Example
-[Join Types,sql]
+The following query returns a list of all Genres, there should be 28 Genres.  
+
+.Genre List
+[source,sql,linenums]
 ----
-include::{sqldir}/0009-joinTypes.sql[]
+include::{sqldir}/0009-joinTypes.sql[lines="1..24"]
 ----
+<1> Column alias
+<2> Alternative method to order by using `Ordinal` position
+not recommended
  
 SQL Download link link:{sqldir}/0009-joinTypes.sql[ click here]
  
-.Results
+.Results for Genre List
 [options='header']
 ,===
-include::{resultdir}/0009a-genreList.csv[Results]
+include::{resultdir}/0009a-genreList.csv[Results for Genre List]
 ,===
  
 Back to <<top>>.
 
- 
+//// 
+***********************************************************************
+INNER JOIN   INNER JOIN  INNER JOIN  INNER JOIN  INNER JOIN  INNER JOIN
+***********************************************************************  
+////
 
+The following query shows the results when a `Inner Join` is used.
+
+There are only 25 Genres in the result as 3 genres have no tracks related to them.
+
+.Inner Join Example
+[source,sql,linenums]
+----
+include::{sqldir}/0009-joinTypes.sql[lines="1..15,26..42"]
+----
+<1> Column Alias
+<2> Aggregate column with alias
+<3> Join (Inner)
+<4> Column alias in group by and order by
+
+ 
+SQL Download link link:{sqldir}/0009-joinTypes.sql[ click here]
+ 
+.Results for Inner Join
+[options='header']
+,===
+include::{resultdir}/0009b-genreTrackCount-inner.csv[Results for Inner Join]
+,===
+
+NOTE: The Genres `Club`, `Dub Step`, `Trance` are not in the results because the have no tracks related to them.
+ 
+Back to <<top>>.
+
+//// 
+***********************************************************************
+RIGHT OUTER   RIGHT OUTER   RIGHT OUTER   RIGHT OUTER   RIGHT OUTER   
+***********************************************************************  
+////
+
+
+The following query shows the results when a `Right Outer Join` is used.
+
+NOTE: This query is different from the one below, note which table is selected first.
+
+.Right Outer Join Example
+[source,sql,linenums]
+----
+include::{sqldir}/0009-joinTypes.sql[lines="1..15,44..60"]
+----
+<1> Column Alias
+<2> Aggregate column with alias
+<3> Join (Right Outer)
+<4> Column alias in group by and order by
+
+
+NOTE: By default the first table in the select is the `Left` table, in this example it is the `Track` table.  The `joined` table is the `Right` table and in this example it is the `Genre` table.  Since this is a `Right` outer join all the rows from the `Right` table (Genre) are returned with any matching rows from the `Left` table (Tracks).
+ 
+SQL Download link link:{sqldir}/0009-joinTypes.sql[ click here]
+ 
+.Results for Right Outer Join
+[options='header']
+,===
+include::{resultdir}/0009c-genreTrackCount-leftOuter.csv[Results for Right Outer Join]
+,===
+
+NOTE: All 28 Genres are returned in the results.  The Genres `Club`, `Dub Step`, `Trance` are included and have a zero (0) trackCount.
+
+Back to <<top>>.
+
+//// 
+***********************************************************************
+LEFT OUTER    LEFT OUTER   LEFT OUTER   LEFT OUTER   LEFT OUTER    
+***********************************************************************  
+//// 
+
+The following query shows the results when a `Left Outer Join` is used.
+
+NOTE: This query is different from the one above, note which table is selected first.
+
+.Left Outer Join Example
+[source,sql,linenums]
+----
+include::{sqldir}/0009-joinTypes.sql[lines="1..15,62..77"]
+----
+<1> Column Alias
+<2> Aggregate column with alias
+<3> Join (Left Outer)
+<4> Column alias in group by and order by
+
+
+NOTE: By default the first table in the select is the `Left` table, in this example it is the `Genre` table.  The `joined` table is the `Right` table and in this example it is the `Track` table.  Since this is a `Right` outer join all the rows from the `Left` table (Genre) are returned with any matching rows from the `Right` table (Tracks).
+ 
+SQL Download link link:{sqldir}/0009-joinTypes.sql[ click here]
+ 
+.Results for Left Outer Join
+[options='header']
+,===
+include::{resultdir}/0009d-genreTrackCount-rightOuter.csv[Results for Right Outer Join]
+,===
+
+NOTE: All 28 Genres are returned in the results.  The Genres `Club`, `Dub Step`, `Trance` are included and have a zero (0) trackCount.
+
+Back to <<top>>.
+
+
+
+//// 
+******************  derivedTable1A  derivedTable1A  derivedTable1A  derivedTable1A      
+////   
 <<<<
 [[derivedTable1PartA]]
 === derivedTable 1 - Part A
@@ -441,7 +654,12 @@ NOTE: Only 20 rows of the result being shown.  The result set has 204 rows, one 
  
 Back to <<top>>.
  
- 
+
+
+
+//// 
+******************  derivedTable1B  derivedTable1B  derivedTable1B  derivedTable1B      
+//// 
 <<<<
 [[derivedTable1PartB]]
 === derived Table 1 -Part B
@@ -489,6 +707,11 @@ Back to <<top>>.
 
 
 
+
+
+//// 
+******************  derivedTable1C  derivedTable1C  derivedTable1C  derivedTable1C      
+////
 <<<<
 [[derivedTable1PartC]]
 === derivedTable 1 - Part C
@@ -526,8 +749,6 @@ Dividing by 60,000.00 translates this into minutes.
 <6> This calculated or derived field is the average of the time (Milliseconds) for all tracks for this artist.
 Dividing by 60,000.00 translate this into minutes.
 
-
-
 SQL Download link link:{sqldir}/0006c-derivedTable.sql[ click here]
  
 .Results
@@ -536,17 +757,19 @@ SQL Download link link:{sqldir}/0006c-derivedTable.sql[ click here]
 include::{resultdir}/0006c-derivedTable.csv[Results,lines=1..20]
 ,===
 
-
 NOTE: Only 20 rows of the result being shown.  The result set has 204 rows, one for each artist.
 
 .Multiple SQL Selects
 image::quote-single.png[Multiple SQL Selects, align='center']
  
-
- 
 Back to <<top>>.
  
 
+
+
+//// 
+******************  derivedTable2A  derivedTable2A  derivedTable2A  derivedTable2A      
+////
 <<<<
 [[derivedTable2Parta]]
 === derivedTable 2 - Part A
@@ -592,6 +815,11 @@ NOTE: Only 20 rows of the result being shown.  The result set has 35 rows, one f
 Back to <<top>>.
  
 
+
+
+//// 
+******************  derivedTable2B  derivedTable2B  derivedTable2B  derivedTable2B      
+////
 <<<<
 [[derivedTable2Partb]]
 === derivedTable 2 - Part B
@@ -633,6 +861,14 @@ NOTE: Only 20 rows of the result being shown.  The result set has 345 rows, one 
 
 Back to <<top>>.
 
+
+
+
+
+
+//// 
+******************  derivedTable2C  derivedTable2C  derivedTable2C  derivedTable2C      
+////
 <<<<
 [[derivedTable2Partc]]
 === derivedTable 2 - Part C
@@ -664,8 +900,6 @@ The derived table name is used to qualify the use of the columns in the main que
 <6> Filter for only tracks that match tracks in the `TL` trackList *Top OrderTrack* list
 <7> `between` function requires starting value `and` ending value
 <8> `date` indicates a date field, Teradata standard format is `yyyy-mm-dd`
-
-
  
 SQL Download link link:{sqldir}/0007c-derivedTable.sql[ click here]
  
@@ -675,19 +909,20 @@ SQL Download link link:{sqldir}/0007c-derivedTable.sql[ click here]
 include::{resultdir}/0007c-derivedTable.csv[Results,lines=1..20]
 ,===
 
-
 NOTE: Only 20 rows of the result being shown.  The result set has ??? rows, one for each track of a 2018 morder of $5 or more.
 
 Back to <<top>>.
 
 
+
+
+
+//// 
+******************  derivedTable2D  derivedTable2D  derivedTable2D  derivedTable2D      
+////
 <<<<
 [[derivedTable2Partd]]
 === derivedTable 2 - Part D
-
-*Objective:* 
-
-*Approach:* 
 
 .derivedTable Filter
 image::derivedTablesFilters.png[Filters]
@@ -738,6 +973,10 @@ Back to <<top>>.
 
 
 
+
+//// 
+******************  createView   createView   createView   createView  
+//// 
 <<<<
 [[createView]]
 
@@ -751,18 +990,18 @@ Views can help you reuse a standard copy of a database object across queries.
 
 Unlike a table which takes up permanent space for its data, a view does not take up permanent space.
 
+NOTE: To create views in your database area you will need to have `Perm Space` assigned to your account.
+
 
 ==== Example
 
 In the Chinook database many of the queries require comprehensive Album information.
 
-To get the comprehensive information we need data from five different tables.
+The Album view with comprehensive album information we need join data from five different tables.
 
 .vAlbum Relationships
 image::vAlbumRelationships.png[vAlbum Relationships, align='center']
  
-
-
   
 .SQL Example
 [source,sql]
@@ -770,12 +1009,13 @@ image::vAlbumRelationships.png[vAlbum Relationships, align='center']
 include::{sqldir}/0100-create-vAlbumView.sql[]
 ----
 <1> The first time a view is built use the `Create` statement
-<2> To change the view use the `update` statement
+<2> To change an existing view use the `update` statement
 <3> Column Alias in order avoid confusion with the field `name`
 <4> Derived Column (aka Calculated Column) notice the 60000.00 has two zeros of precision in order to return a decimal number
 <5> Derived Column (aka Calculated Column) notice the 1048576.00 has two zeros of precision in order to return a decimal number
 <6> Table alias, each joined table has it own unique table alias.  
-NOTE: This example the `Album` table was chosen as the main table of the view.
+
+NOTE: In this example the `Album` table was chosen as the main table of the view.
  
 SQL Download link link:{sqldir}/0100-create-vAlbumView.sql[ click here]
  
@@ -784,6 +1024,7 @@ If you didn't create the view then you may not know the column names of the view
 To display a list of the `vAlbum` view columns use
 
    help view vAlbum  
+
 
 The column list of the view will be returned.
 
@@ -806,14 +1047,123 @@ NOTE: Any bulk comments `/* comments \*/` will have been stripped out by Teradat
 .Longest Query Rewards
 image::quote-longest.png[Longest Query Rewards, align='center']
  
+Back to <<top>>.
+ 
 
 
 
+
+//// 
+******************  dateFilters     dateFilters   dateFilters   dateFilters   dateFilters   
+////  
+<<<<
+[[dateFilters]]
+=== Date Filters
+  
+The Teradata `extract` function provides month, day and year.
+
+The Teradata `Csum` OLAP function is used for the running totals.
+
+Csum( `column to sum`, `Column to sum by` ).
+
+This query displays a cumulative sum (Running total) of the sales occurring during the "Bargain Days".
+"Bargain Days" are the first week of September thru December for 2018.
+
+.SQL Example
+[source,sql,linenums]
+----
+include::{sqldir}/0012-dateFilters.sql[]
+----
+<1> Column Alias
+<2> Date function `Extract` 
+<3> OLAP Csum
+<4> Table alias
+
+
+SQL Download link link:{sqldir}/0012-dateFilters.sql[ click here]
+ 
+.Results
+[options='header']
+,===
+include::{resultdir}/0012-dateFilters.csv[Results]
+,===
  
 Back to <<top>>.
  
 
 
+
+
+//// 
+******************  ranking   ranking   ranking   ranking   ranking   
+////  
+<<<<
+<<<<
+[[ranking]]
+=== Ranking
+
+Ranking is a combination of sorting the results and assigning an ordinal number corresponding to the rank for the result.  Similar ranked numbers share the ordinal number assigned to them.
+
+The Teradata `Rank` function uses just one argument, the column you want to rank by.
+
+NOTE: The `Rank` function and aggregate functions can not be a single select query.
+
+In this query we want 
+
+* Ranking of *Genre* by the number of `Sales`.   
+* A `Sale` relates to an single *InvoiceLineItem*.
+* Each *InvoiceLineItem* is related to a *Track* which has the *Genre* information
+* So an *Invoice* with 6 *InvoiceLineItems* counts as a `Sale` count of 6
+  
+.SQL Example
+[source,sql,linenums]
+----
+include::{sqldir}/0014-rank.sql[]
+----
+<1> Column alias
+<2> OLAP function Rank
+<3> Aggregate function Count
+<4> Table alias
+<5> Column Alias for group by
+<6> Derived Table (Sub-query) named `GC` for genreCounts
+
+NOTE: Because the `GC` columns come from a derived table they can be used in `group by`.
+The restriction is that the Table alias `GC` can *NOT* be part of the column name.
+
+NOTE: Because `Rank` is automatically doing the `Order by` based on the column in the `Rank` statement.
+Do *NOT* add an additional `order by` the results will be incorrect.
+
+ 
+SQL Download link link:{sqldir}/0014-rank.sql[ click here]
+ 
+.Results
+[options='header']
+,===
+include::{resultdir}/0014-rank.csv[Results]
+,===
+<1>
+
+NOTE: The Genre's `Sci Fi & Fantasy` and `Soundtrack` share ranking number `13` because they both have a `saleCount` of `20`.  There are two other shared ranking numbers `19` and `23`
+ 
+Back to <<top>>.
+ 
+
+
+
+
+
+////
+*******************************************************************
+  _______ _           
+ |__   __(_)          
+    | |   _ _ __  ___ 
+    | |  | | '_ \/ __|
+    | |  | | |_) \__ \
+    |_|  |_| .__/|___/
+           | |        
+           |_|        
+********************************************************************
+////
 <<<<
 == Tips 
 
@@ -862,6 +1212,15 @@ Y=Number of digits of precision, number og digits to the right of the decimal po
 (ie: 999.99 Y=2) 
 
 
+=== Join
+
+* The `Left` table is defined by the first `Select` in the query.
+* The `Right` table is defined by the object in the `Join` clause.
+* The `Inner Join` returns results where there is a matching column in both Left and Right tables.
+* The `Outer Join` returns *ALL* results from one table and any matching results from the other table.
+* The *ALL* table is determined by the direction of the `Outer join` (Left Outer Join, Right Outer Join).
+
+
 
 === Naming practice
 
@@ -872,13 +1231,10 @@ should use the same name.
 * Short descriptive column names are better than abbreviations.
 
 
-=== Join
+=== OLAP Functions
 
-* The `Left` table is defined by the first `Select` in the query.
-* The `Right` table is defined by the object in the `Join` clause.
-* The `Inner Join` returns results where there is a matching column in both Left and Right tables.
-* The `Outer Join` returns *ALL* results from one table and any matching results from the other table.
-* The *ALL* table is determined by the direction of the `Outer join` (Left Outer Join, Right Outer Join).
+* `CSUM` uses two arguments.  First argument is the column to be summed, the second argument is the column to `sum by`.
+* `Rank` only has one argument.  This argument is the field to be ranked.  Duplicate values in this argument will share a ranking number.  `Rank` automatically performs an `order by`.
 
 
 === Order By
@@ -959,12 +1315,35 @@ Author contact Information
 
 *Phone:*  517-927-7400
 
-NOTE: Please provide any feedback, corrections or suggestions to the author.  The folks providing the most anount of feedback will win prizes.
+NOTE: Please provide any feedback, corrections or suggestions to the author.  The folks providing the most amount of feedback will win prizes.
 
 
- 
+////
+*********************************************************************
+  _____       __                             
+ |  __ \     / _|                            
+ | |__) |___| |_ ___ _ __ ___ _ __   ___ ___ 
+ |  _  // _ \  _/ _ \ '__/ _ \ '_ \ / __/ _ \
+ | | \ \  __/ ||  __/ | |  __/ | | | (_|  __/
+ |_|  \_\___|_| \___|_|  \___|_| |_|\___\___|
+                                             
+                                             
+**********************************************************************
+//// 
 <<<<
 == Reference
+
+This reference material and links may change over time.  
+
+If you get a broken link use your GoogleFoo to locate the material.
+
+=== Related Links
+
+Database 5 Pro SQL Tool: https://fishcodelib.com/database.htm[https://fishcodelib.com/database.htm]
+
+DBeaver SQL Tool: https://dbeaver.io/[https://dbeaver.io/]
+
+Stack Overflow (Teradata Forum): https://stackoverflow.com/questions/tagged/teradata[https://stackoverflow.com/questions/tagged/teradata, window='_blank']
 
 === Teradata links
 
@@ -976,12 +1355,13 @@ SQL Assistant: https://bit.ly/2LYpXxB[window='_blank']
 
 SQL Introduction: https://bit.ly/2Fhxp5C[window='_blank']
 
-Stack Overflow (Teradata Forum): https://stackoverflow.com/questions/tagged/teradata[https://stackoverflow.com/questions/tagged/teradata, window='_blank']
+Teradata Studio: http://downloads.teradata.com/download/tools/teradata-studio[http://downloads.teradata.com/download/tools/teradata-studio]
 
+Teradata Tools and Utilities (TTU): https://downloads.teradata.com/download/tools/teradata-tools-and-utilities-windows-installation-package[https://downloads.teradata.com/download/tools/teradata-tools-and-utilities-windows-installation-package]
 
+=== Chinook database creation
 
-
-
+The Teradata script used to create the Chinook database is avaliable at this link:{sqldir}/0000-createDatabaseLocal.sql[ link.]
 
 
 === Column Type
@@ -1000,11 +1380,18 @@ include::{docodir}/column-type.csv[ColumnType]
  
 
  
-
- 
-
-
-
+////
+*******************************************************************************************
+  _____                                        _     _    _ _     _                   
+ |  __ \                                      | |   | |  | (_)   | |                  
+ | |  | | ___   ___ _   _ _ __ ___   ___ _ __ | |_  | |__| |_ ___| |_ ___  _ __ _   _ 
+ | |  | |/ _ \ / __| | | | '_ ` _ \ / _ \ '_ \| __| |  __  | / __| __/ _ \| '__| | | |
+ | |__| | (_) | (__| |_| | | | | | |  __/ | | | |_  | |  | | \__ \ || (_) | |  | |_| |
+ |_____/ \___/ \___|\__,_|_| |_| |_|\___|_| |_|\__| |_|  |_|_|___/\__\___/|_|   \__, |
+                                                                                 __/ |
+                                                                                |___/ 
+********************************************************************************************
+////
 
 <<<<
 == Document History
@@ -1013,8 +1400,11 @@ include::{docodir}/column-type.csv[ColumnType]
 [cols='2,2,2,6' options='header']
 |===
 | Date  | Version | Author | Description
+| 01/11/2019 | V2.1n | JHRS | Added view updates, dateFunctions, SQL Tool info
+                              title 'Learning Guide'
 | 01/10/2019 | V2.1M | JHRS | Moved Tips from SQL queries to make them smaller
-                              and avoid sync issues
+                              and avoid sync issues, fixed join definitions
+                              updated derived query B
 | 01/09/2019 | v2.1k | JHRS | Added View and join types, plaques
 | 01/08/2018 | V2.1j | JHRS | Updated Chinook introduction
 | 01/03/2019 | V2.1h | JHRS | Added derived Table for Filters

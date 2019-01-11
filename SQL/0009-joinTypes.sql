@@ -1,22 +1,20 @@
 ﻿/*
 === joinTypes - Inner Join and Outer Join
 
-   
-==== TOPICS
+==== Topics 
 
-* List of Track count for *ALL* Genres
-* Multiple queries in one statment
-* Inner Join
-* Outer Join
-
-   
-==== TIPS
-
-
+* Aggregates (Count, Sum, Min, Max, Avg, etc)
+* Between function
+* Column Alias, rename a column
+* Comments, information or debugging
+* Group by, required for non-aggregate columns
+* Join objects (Table, View, Derived Table) together
+* Order by,  also known as sorting
+* Where, results filter or restriction
+* Table alias, standardize and simplify table/view names
 */
  
--- List of *all* Genre, there are 28 genres
- 
+-- List of *all* Genre, there are 28 genres 
 select
     G.GenreID
     ,G.Name as genreName  --<1>
@@ -30,17 +28,17 @@ order by genreName;
 Select
     G.GenreID
     ,G.Name as genreName  --<1>    
-    ,count(T.TrackID) as numberTracks --<3>
+    ,count(T.TrackID) as numberTracks --<2>
 from Track T    
 
-inner Join Genre G   --<4>
+inner Join Genre G   --<3>
 on G.GenreID = T.GenreID
 
 Group by
 	G.GenreID
-	,genreName   --<5>
+	,genreName   --<4>
 order by 
-	genreName;  --<5>
+	genreName;  --<4>
 	
 	
 -- Track Count by Genre (Inner Join)  Right
@@ -48,17 +46,17 @@ order by
 Select
     G.GenreID
     ,G.Name as genreName  --<1>    
-    ,count(T.TrackID) as numberTracks --<3>
+    ,count(T.TrackID) as numberTracks --<2>
 from Track T    
 
-right outer Join Genre G   --<6>
-on G.GenreID = T.GenreID
+right outer Join Genre G   --<3>
+on G.GenreID = T.GenreID  -- NOTE: G is first table, T is second table
 
 Group by
 	G.GenreID
-	,genreName   --<5>
+	,genreName   --<4>
 order by 
-	genreName;  --<5>	
+	genreName;  --<4>	
 	
 	
 -- Track Count by Genre (Inner Join)  Left
@@ -66,14 +64,14 @@ order by
 Select
     G.GenreID
     ,G.Name as genreName  --<1>    
-    ,count(T.TrackID) as numberTracks --<3>
+    ,count(T.TrackID) as numberTracks --<2>
 from Genre G   
 
-left outer Join Track T  --<6>
+left outer Join Track T  --<3>
 on T.GenreID = G.GenreID
 
 Group by
 	G.GenreID
-	,genreName   --<5>
+	,genreName   --<4>
 order by 
-	genreName;  --<5>		
+	genreName;  --<4>		

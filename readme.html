@@ -529,9 +529,9 @@ table.CodeRay td.code>pre{padding:0}
 <div class="details">
 <span id="author" class="author">John HR Schuster</span><br>
 <span id="email" class="email"><a href="mailto:John.schuster@PhoenixWorkgroup.com">John.schuster@PhoenixWorkgroup.com</a></span><br>
-<span id="revnumber">version 2.1k,</span>
-<span id="revdate">01/09/2019</span>
-<br><span id="revremark">Education Document</span>
+<span id="revnumber">version 2.1n,</span>
+<span id="revdate">01/11/2019</span>
+<br><span id="revremark">Learning Guide</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -544,64 +544,69 @@ table.CodeRay td.code>pre{padding:0}
 </ul>
 </li>
 <li><a href="#_database_objects">1.2. Database Objects</a></li>
+<li><a href="#_sql_query_tools">1.3. SQL Query Tools</a></li>
 </ul>
 </li>
 <li><a href="#_questions">2. Questions</a></li>
-<li><a href="#_sql_overview">3. SQL Overview</a></li>
-<li><a href="#_queries">4. Queries</a>
+<li><a href="#_queries">3. Queries</a>
 <ul class="sectlevel2">
-<li><a href="#tableCounts">4.1. tableCounts</a></li>
-<li><a href="#dbObjects">4.2. dbObjects</a></li>
-<li><a href="#tableColumns">4.3. tableColumns</a></li>
-<li><a href="#findColumn">4.4. findColumn</a></li>
-<li><a href="#joinQueryPartA">4.5. joinQuery Part A</a></li>
-<li><a href="#joinQueryPartB">4.6. joinQuery Part B</a></li>
-<li><a href="#joinQueryPartC">4.7. joinQuery Part C</a></li>
-<li><a href="#joinTypes">4.8. Join Types</a>
+<li><a href="#tableCounts">3.1. tableCounts</a></li>
+<li><a href="#dbObjects">3.2. dbObjects</a></li>
+<li><a href="#tableColumns">3.3. tableColumns</a></li>
+<li><a href="#findColumn">3.4. findColumn</a></li>
+<li><a href="#joinQueryPartA">3.5. joinQuery Part A</a></li>
+<li><a href="#joinQueryPartB">3.6. joinQuery Part B</a></li>
+<li><a href="#joinQueryPartC">3.7. joinQuery Part C</a></li>
+<li><a href="#joinTypes">3.8. Join Types</a>
 <ul class="sectlevel3">
-<li><a href="#_inner_join">4.8.1. Inner Join</a></li>
-<li><a href="#_outer_join">4.8.2. Outer Join</a></li>
+<li><a href="#_inner_join">3.8.1. Inner Join</a></li>
+<li><a href="#_outer_join">3.8.2. Outer Join</a></li>
 </ul>
 </li>
-<li><a href="#derivedTable1PartA">4.9. derivedTable 1 - Part A</a></li>
-<li><a href="#derivedTable1PartB">4.10. derived Table 1 -Part B</a></li>
-<li><a href="#derivedTable1PartC">4.11. derivedTable 1 - Part C</a></li>
-<li><a href="#derivedTable2Parta">4.12. derivedTable 2 - Part A</a></li>
-<li><a href="#derivedTable2Partb">4.13. derivedTable 2 - Part B</a></li>
-<li><a href="#derivedTable2Partc">4.14. derivedTable 2 - Part C</a></li>
-<li><a href="#derivedTable2Partd">4.15. derivedTable 2 - Part D</a></li>
-<li><a href="#createView">4.16. Create View</a>
+<li><a href="#derivedTable1PartA">3.9. derivedTable 1 - Part A</a></li>
+<li><a href="#derivedTable1PartB">3.10. derived Table 1 -Part B</a></li>
+<li><a href="#derivedTable1PartC">3.11. derivedTable 1 - Part C</a></li>
+<li><a href="#derivedTable2Parta">3.12. derivedTable 2 - Part A</a></li>
+<li><a href="#derivedTable2Partb">3.13. derivedTable 2 - Part B</a></li>
+<li><a href="#derivedTable2Partc">3.14. derivedTable 2 - Part C</a></li>
+<li><a href="#derivedTable2Partd">3.15. derivedTable 2 - Part D</a></li>
+<li><a href="#createView">3.16. Create View</a>
 <ul class="sectlevel3">
-<li><a href="#_example">4.16.1. Example</a></li>
+<li><a href="#_example">3.16.1. Example</a></li>
 </ul>
 </li>
+<li><a href="#dateFilters">3.17. Date Filters</a></li>
+<li><a href="#ranking">3.18. Ranking</a></li>
 </ul>
 </li>
-<li><a href="#_tips">5. Tips</a>
+<li><a href="#_tips">4. Tips</a>
 <ul class="sectlevel2">
-<li><a href="#_aggregate_functions">5.1. Aggregate Functions</a></li>
-<li><a href="#_column_alias">5.2. Column Alias</a></li>
-<li><a href="#_dates">5.3. Dates</a></li>
-<li><a href="#_derived_tables_sub_queries">5.4. Derived Tables (Sub-Queries)</a></li>
-<li><a href="#_formatting_conversion">5.5. Formatting / Conversion</a></li>
-<li><a href="#_naming_practice">5.6. Naming practice</a></li>
-<li><a href="#_join">5.7. Join</a></li>
-<li><a href="#_order_by">5.8. Order By</a></li>
-<li><a href="#_select_columns">5.9. Select columns</a></li>
-<li><a href="#_table_alias">5.10. Table Alias</a></li>
-<li><a href="#_teradata_specific">5.11. Teradata Specific</a></li>
-<li><a href="#_union">5.12. Union</a></li>
-<li><a href="#_where">5.13. Where</a></li>
+<li><a href="#_aggregate_functions">4.1. Aggregate Functions</a></li>
+<li><a href="#_column_alias">4.2. Column Alias</a></li>
+<li><a href="#_dates">4.3. Dates</a></li>
+<li><a href="#_derived_tables_sub_queries">4.4. Derived Tables (Sub-Queries)</a></li>
+<li><a href="#_formatting_conversion">4.5. Formatting / Conversion</a></li>
+<li><a href="#_join">4.6. Join</a></li>
+<li><a href="#_naming_practice">4.7. Naming practice</a></li>
+<li><a href="#_olap_functions">4.8. OLAP Functions</a></li>
+<li><a href="#_order_by">4.9. Order By</a></li>
+<li><a href="#_select_columns">4.10. Select columns</a></li>
+<li><a href="#_table_alias">4.11. Table Alias</a></li>
+<li><a href="#_teradata_specific">4.12. Teradata Specific</a></li>
+<li><a href="#_union">4.13. Union</a></li>
+<li><a href="#_where">4.14. Where</a></li>
 </ul>
 </li>
-<li><a href="#_contact_information">6. Contact Information</a></li>
-<li><a href="#_reference">7. Reference</a>
+<li><a href="#_contact_information">5. Contact Information</a></li>
+<li><a href="#_reference">6. Reference</a>
 <ul class="sectlevel2">
-<li><a href="#_teradata_links">7.1. Teradata links</a></li>
-<li><a href="#_column_type">7.2. Column Type</a></li>
+<li><a href="#_related_links">6.1. Related Links</a></li>
+<li><a href="#_teradata_links">6.2. Teradata links</a></li>
+<li><a href="#_chinook_database_creation">6.3. Chinook database creation</a></li>
+<li><a href="#_column_type">6.4. Column Type</a></li>
 </ul>
 </li>
-<li><a href="#_document_history">8. Document History</a></li>
+<li><a href="#_document_history">7. Document History</a></li>
 </ul>
 </div>
 </div>
@@ -680,7 +685,7 @@ A teacher, a really good teacher, is never a giver of truth; he is a guide, a po
 <p>Each <strong>Customer</strong> has 1 or more <strong>Invoices</strong></p>
 </li>
 <li>
-<p>Each <strong>Customer</strong> has just 1 support rep who is an <strong>Employee</strong></p>
+<p>Each <strong>Customer</strong> has just 1 <code>support rep</code> who is an <strong>Employee</strong></p>
 </li>
 <li>
 <p>Each <strong>Invoice</strong> has 1 or more <strong>Invoice Lines</strong></p>
@@ -689,7 +694,7 @@ A teacher, a really good teacher, is never a giver of truth; he is a guide, a po
 <p>Each <strong>Invoice Line</strong> is related to just 1 <strong>Track</strong></p>
 </li>
 <li>
-<p><strong>Invoices</strong> span 2016 - 2018</p>
+<p><strong>Invoices</strong> span 2014 - 2018</p>
 </li>
 <li>
 <p>Each <strong>Playlist</strong> has 1 or more <strong>Tracks</strong></p>
@@ -697,7 +702,22 @@ A teacher, a really good teacher, is never a giver of truth; he is a guide, a po
 <li>
 <p>Not all <strong>Genre</strong> have <strong>Tracks</strong></p>
 </li>
+<li>
+<p>Not all <strong>Employees</strong> who are <code>support reps</code> have customers</p>
+</li>
 </ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The <code>Chinook</code> database will be known as the <code>DCH_Training</code> located on the <code>DRBC</code> server.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -725,6 +745,40 @@ A teacher, a really good teacher, is never a giver of truth; he is a guide, a po
 <div class="paragraph">
 <p>The reason for the term <code>Database Object</code> is to eliminate the confusion that can occur when objects change.
 (IE: A view you created is materialized into a table, a query you wrote is changed into a store procedure)</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sql_query_tools">1.3. SQL Query Tools</h3>
+<div class="paragraph">
+<p>There are a variety of SQL tools that can be used to develop and utilize the Teradata database.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Teradata SQL Assistant - Included in the Teradata Tools and Utilities installation package</p>
+</li>
+<li>
+<p>Teradata Studio - Available as a separate download</p>
+</li>
+<li>
+<p>Database 5 Pro - Intuitive multiple database manager, portable (Authors preference)</p>
+</li>
+<li>
+<p>DBeaver - Free, open source, multi-platform universal database tool</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Many of the screen captures will be done using Database 5 Pro.
+</td>
+</tr>
+</table>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -763,6 +817,10 @@ A teacher, a really good teacher, is never a giver of truth; he is a guide, a po
 <p>View this query <a href="#joinQueryPartC">joinQuery Part C</a></p>
 </li>
 <li>
+<p><em>How do I select or restrict a date column by month, day or year?</em></p>
+<p>View this query <a href="#dateFilters">Date Filters</a></p>
+</li>
+<li>
 <p><em>How do I sort the results by multiple columns?</em></p>
 <p>View this query <a href="#joinQueryPartC">joinQuery Part C</a></p>
 </li>
@@ -772,11 +830,11 @@ A teacher, a really good teacher, is never a giver of truth; he is a guide, a po
 </li>
 <li>
 <p><em>How do I use a sub-query to reduce or filter information?</em></p>
-<p>View this query <a href="#derivedTable2Parta">derivedTable 2 - Part A</a></p>
+<p>View this query <a href="#derivedTable2A">[derivedTable2A]</a></p>
 </li>
 <li>
 <p><em>When do I use the <code>having</code> clause?</em></p>
-<p>View this query <a href="#derivedTable2Partd">derivedTable 2 - Part D</a></p>
+<p>View this query <a href="#derivedTable2PartD">[derivedTable2PartD]</a></p>
 </li>
 <li>
 <p><em>When is it a good idea to use a <code>view</code>?</em></p>
@@ -787,6 +845,11 @@ A teacher, a really good teacher, is never a giver of truth; he is a guide, a po
 <p>Visit this query <a href="#joinTypes">Join Types</a></p>
 </li>
 <li>
+<p><em>How do a do a Running Total (Cumulative Sum)?</em></p>
+<p>View this query <a href="#dateFilters">Date Filters</a></p>
+</li>
+<li>
+<p><em>How can a do a ranking of the results?</em></p>
 <p><em>How can I best use "Prompts" in SQL Assistant?</em></p>
 <p>unlinked</p>
 </li>
@@ -796,17 +859,41 @@ A teacher, a really good teacher, is never a giver of truth; he is a guide, a po
 </div>
 </div>
 <div class="sect1">
-<h2 id="_sql_overview">3. SQL Overview</h2>
+<h2 id="_queries">3. Queries</h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p>The queries in this document are not presented in any particular order.</p>
 </div>
+<div class="paragraph">
+<p>These queries were constructed to answer specific questions from the students.</p>
 </div>
-<div class="sect1">
-<h2 id="_queries">4. Queries</h2>
-<div class="sectionbody">
+<div class="paragraph">
+<p>Whenever possible the actual SQL query statement is shown and can be downloaded.
+These queries can be the starting point for learning how to perform some function.</p>
+</div>
+<div class="paragraph">
+<p>There are numbered call-outs on the SQL queries which are defined at the end of the query.
+These call-outs are used to help highlight techniques or direct attention to subject matter.</p>
+</div>
+<div class="paragraph">
+<p>The results of each query are shown and may vary slightly from the edition of the Chinook database you are using.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If the query does not contain an <code>order by</code> clause then the results come back in a random order.
+TThis is normal for the Teradata database.
+</td>
+</tr>
+</table>
+</div>
 <div style="page-break-after: always;"></div>
 <div class="sect2">
-<h3 id="tableCounts">4.1. tableCounts</h3>
+<h3 id="tableCounts">3.1. tableCounts</h3>
 <div class="listingblock">
 <div class="title">SQL Example</div>
 <div class="content">
@@ -886,7 +973,7 @@ A teacher, a really good teacher, is never a giver of truth; he is a guide, a po
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>count(\*)  is an aggregate function</td>
+<td>count(*)  is an aggregate function</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
@@ -980,7 +1067,7 @@ Your table counts may vary from this example as the Chinook database is updated 
 <div style="page-break-after: always;"></div>
 </div>
 <div class="sect2">
-<h3 id="dbObjects">4.2. dbObjects</h3>
+<h3 id="dbObjects">3.2. dbObjects</h3>
 <div class="listingblock">
 <div class="title">SQL Example</div>
 <div class="content">
@@ -1253,7 +1340,7 @@ Your database objects may vary from this example as the Chinook database is upda
 <div style="page-break-after: always;"></div>
 </div>
 <div class="sect2">
-<h3 id="tableColumns">4.3. tableColumns</h3>
+<h3 id="tableColumns">3.3. tableColumns</h3>
 <div class="listingblock">
 <div class="title">SQL Example</div>
 <div class="content">
@@ -1620,7 +1707,7 @@ Reference: <a href="#ColumnType">[ColumnType]</a>
 <div style="page-break-after: always;"></div>
 </div>
 <div class="sect2">
-<h3 id="findColumn">4.4. findColumn</h3>
+<h3 id="findColumn">3.4. findColumn</h3>
 <div class="listingblock">
 <div class="title">SQL Example</div>
 <div class="content">
@@ -1715,7 +1802,7 @@ Reference: <a href="#_column_type">Column Type</a>
 <div style="page-break-after: always;"></div>
 </div>
 <div class="sect2">
-<h3 id="joinQueryPartA">4.5. joinQuery Part A</h3>
+<h3 id="joinQueryPartA">3.5. joinQuery Part A</h3>
 <div class="paragraph">
 <p><strong>Objective:</strong> Get a list of tracks from the <strong>Artist</strong> <code>Aerosmith</code>
 where the <strong>Composer</strong> is <code>Joe Perry</code>.</p>
@@ -1785,7 +1872,7 @@ In this query we want to get the <strong>ArtistID</strong> for <code>Aerosmith</
 <div style="page-break-after: always;"></div>
 </div>
 <div class="sect2">
-<h3 id="joinQueryPartB">4.6. joinQuery Part B</h3>
+<h3 id="joinQueryPartB">3.6. joinQuery Part B</h3>
 <div class="paragraph">
 <p><strong>Objective:</strong> Get a list of tracks from the <strong>Artist</strong> <code>Aerosmith</code>
 where the <strong>Composer</strong> is <code>Joe Perry</code>.</p>
@@ -1873,7 +1960,7 @@ where the <strong>Composer</strong> is <code>Joe Perry</code>.</p>
 <div style="page-break-after: always;"></div>
 </div>
 <div class="sect2">
-<h3 id="joinQueryPartC">4.7. joinQuery Part C</h3>
+<h3 id="joinQueryPartC">3.7. joinQuery Part C</h3>
 <div class="paragraph">
 <p><strong>Objective:</strong> Get a list of tracks from the <strong>Artist</strong> <code>Aerosmith</code>
 where the <strong>Composer</strong> is <code>Joe Perry</code>.</p>
@@ -2076,7 +2163,7 @@ an alias column <code>trackName</code></td>
 <div style="page-break-after: always;"></div>
 </div>
 <div class="sect2">
-<h3 id="joinTypes">4.8. Join Types</h3>
+<h3 id="joinTypes">3.8. Join Types</h3>
 <div class="paragraph">
 <p>The relationships between database objects are defined using <code>join</code> statements.</p>
 </div>
@@ -2084,7 +2171,7 @@ an alias column <code>trackName</code></td>
 <p>Two database objects are joined using one or more common columns between them.</p>
 </div>
 <div class="sect3">
-<h4 id="_inner_join">4.8.1. Inner Join</h4>
+<h4 id="_inner_join">3.8.1. Inner Join</h4>
 <div class="paragraph">
 <p>An <code>Inner Join</code> can be used when you know there is at least one row in each of the two tables being joined.
 The business rules or the data model can help define when this relationship occurs.</p>
@@ -2098,7 +2185,7 @@ The <code>Inner Join</code> can be much more performant than a <code>where</code
 </div>
 </div>
 <div class="sect3">
-<h4 id="_outer_join">4.8.2. Outer Join</h4>
+<h4 id="_outer_join">3.8.2. Outer Join</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -2147,95 +2234,58 @@ Think of it as one object on the left and the second object on the right.</p>
 </div>
 <div class="title">Figure 4. Left Outer Join</div>
 </div>
-<div class="listingblock">
-<div class="title">SQL Example</div>
-<div class="content">
-<pre>/*
-=== joinTypes - Inner Join and Outer Join
-
-
-==== TOPICS
-
-* List of Track count for *ALL* Genres
-* Multiple queries in one statment
-* Inner Join
-* Outer Join
-
-
-==== TIPS
-
-
-*/
-
--- List of *all* Genre, there are 28 genres
-
-select
-    G.GenreID
-    ,G.Name as genreName  <i class="conum" data-value="1"></i><b>(1)</b>
-from Genre G
-order by genreName;
--- Order by 2     <i class="conum" data-value="2"></i><b>(2)</b>
-
-
--- Track Count by Genre (Inner Join), this returns 25 genres
--- because 3 genres have no tracks
-Select
-    G.GenreID
-    ,G.Name as genreName  <i class="conum" data-value="1"></i><b>(1)</b>
-    ,count(T.TrackID) as numberTracks <i class="conum" data-value="3"></i><b>(3)</b>
-from Track T
-
-inner Join Genre G   <i class="conum" data-value="4"></i><b>(4)</b>
-on G.GenreID = T.GenreID
-
-Group by
-	G.GenreID
-	,genreName   <i class="conum" data-value="5"></i><b>(5)</b>
-order by
-	genreName;  <i class="conum" data-value="5"></i><b>(5)</b>
-
-
--- Track Count by Genre (Inner Join)  Right
--- This returns *ALL* 28 genres because the table on the right is the Genre table
-Select
-    G.GenreID
-    ,G.Name as genreName  <i class="conum" data-value="1"></i><b>(1)</b>
-    ,count(T.TrackID) as numberTracks <i class="conum" data-value="3"></i><b>(3)</b>
-from Track T
-
-right outer Join Genre G   <i class="conum" data-value="6"></i><b>(6)</b>
-on G.GenreID = T.GenreID
-
-Group by
-	G.GenreID
-	,genreName   <i class="conum" data-value="5"></i><b>(5)</b>
-order by
-	genreName;  <i class="conum" data-value="5"></i><b>(5)</b>
-
-
--- Track Count by Genre (Inner Join)  Left
--- This returns *ALL* 28 genres because the table on the left is the Genre table
-Select
-    G.GenreID
-    ,G.Name as genreName  <i class="conum" data-value="1"></i><b>(1)</b>
-    ,count(T.TrackID) as numberTracks <i class="conum" data-value="3"></i><b>(3)</b>
-from Genre G
-
-left outer Join Track T  <i class="conum" data-value="6"></i><b>(6)</b>
-on T.GenreID = G.GenreID
-
-Group by
-	G.GenreID
-	,genreName   <i class="conum" data-value="5"></i><b>(5)</b>
-order by
-	genreName;  <i class="conum" data-value="5"></i><b>(5)</b></pre>
+<div class="paragraph">
+<p>The following set of queries show how the results of a query can change due to the direction of the <code>Outer Join</code>.</p>
 </div>
+<div class="paragraph">
+<p>The following query returns a list of all Genres, there should be 28 Genres.</p>
+</div>
+<div class="listingblock">
+<div class="title">Genre List</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="sql"><span class="line-numbers"> 1</span><span class="comment">/*</span>
+<span class="line-numbers"> 2</span><span class="comment">=== joinTypes - Inner Join and Outer Join</span>
+<span class="line-numbers"> 3</span><span class="comment"></span>
+<span class="line-numbers"> 4</span><span class="comment">==== Topics</span>
+<span class="line-numbers"> 5</span><span class="comment"></span>
+<span class="line-numbers"> 6</span><span class="comment">* Aggregates (Count, Sum, Min, Max, Avg, etc)</span>
+<span class="line-numbers"> 7</span><span class="comment">* Between function</span>
+<span class="line-numbers"> 8</span><span class="comment">* Column Alias, rename a column</span>
+<span class="line-numbers"> 9</span><span class="comment">* Comments, information or debugging</span>
+<span class="line-numbers">10</span><span class="comment">* Group by, required for non-aggregate columns</span>
+<span class="line-numbers">11</span><span class="comment">* Join objects (Table, View, Derived Table) together</span>
+<span class="line-numbers">12</span><span class="comment">* Order by,  also known as sorting</span>
+<span class="line-numbers">13</span><span class="comment">* Where, results filter or restriction</span>
+<span class="line-numbers">14</span><span class="comment">* Table alias, standardize and simplify table/view names</span>
+<span class="line-numbers">15</span><span class="comment">*/</span>
+<span class="line-numbers">16</span>
+<span class="line-numbers">17</span><span class="comment">-- List of *all* Genre, there are 28 genres</span>
+<span class="line-numbers">18</span><span class="class">select</span>
+<span class="line-numbers">19</span>    G.GenreID
+<span class="line-numbers">20</span>    ,G.Name <span class="keyword">as</span> genreName  <i class="conum" data-value="1"></i><b>(1)</b>
+<span class="line-numbers">21</span><span class="keyword">from</span> Genre G
+<span class="line-numbers">22</span><span class="keyword">order</span> <span class="keyword">by</span> genreName;
+<span class="line-numbers">23</span><span class="comment">-- Order by 2     </span><i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Column alias</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Alternative method to order by using <code>Ordinal</code> position
+not recommended</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>SQL Download link <a href="./SQL/0009-joinTypes.sql"> click here</a></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 8. Results</caption>
+<caption class="title">Table 8. Results for Genre List</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -2364,11 +2414,749 @@ order by
 <div class="paragraph">
 <p>Back to <a href="#top">Introduction</a>.</p>
 </div>
+<div class="paragraph">
+<p>The following query shows the results when a <code>Inner Join</code> is used.</p>
+</div>
+<div class="paragraph">
+<p>There are only 25 Genres in the result as 3 genres have no tracks related to them.</p>
+</div>
+<div class="listingblock">
+<div class="title">Inner Join Example</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="sql"><span class="line-numbers"> 1</span><span class="comment">/*</span>
+<span class="line-numbers"> 2</span><span class="comment">=== joinTypes - Inner Join and Outer Join</span>
+<span class="line-numbers"> 3</span><span class="comment"></span>
+<span class="line-numbers"> 4</span><span class="comment">==== Topics</span>
+<span class="line-numbers"> 5</span><span class="comment"></span>
+<span class="line-numbers"> 6</span><span class="comment">* Aggregates (Count, Sum, Min, Max, Avg, etc)</span>
+<span class="line-numbers"> 7</span><span class="comment">* Between function</span>
+<span class="line-numbers"> 8</span><span class="comment">* Column Alias, rename a column</span>
+<span class="line-numbers"> 9</span><span class="comment">* Comments, information or debugging</span>
+<span class="line-numbers">10</span><span class="comment">* Group by, required for non-aggregate columns</span>
+<span class="line-numbers">11</span><span class="comment">* Join objects (Table, View, Derived Table) together</span>
+<span class="line-numbers">12</span><span class="comment">* Order by,  also known as sorting</span>
+<span class="line-numbers">13</span><span class="comment">* Where, results filter or restriction</span>
+<span class="line-numbers">14</span><span class="comment">* Table alias, standardize and simplify table/view names</span>
+<span class="line-numbers">15</span><span class="comment">*/</span>
+<span class="line-numbers">16</span><span class="comment">-- Track Count by Genre (Inner Join), this returns 25 genres</span>
+<span class="line-numbers">17</span><span class="comment">-- because 3 genres have no tracks</span>
+<span class="line-numbers">18</span><span class="class">Select</span>
+<span class="line-numbers">19</span>    G.GenreID
+<span class="line-numbers">20</span>    ,G.Name <span class="keyword">as</span> genreName  <i class="conum" data-value="1"></i><b>(1)</b>
+<span class="line-numbers">21</span>    ,<span class="predefined">count</span>(T.TrackID) <span class="keyword">as</span> numberTracks <i class="conum" data-value="2"></i><b>(2)</b>
+<span class="line-numbers">22</span><span class="keyword">from</span> Track T
+<span class="line-numbers">23</span>
+<span class="line-numbers">24</span><span class="keyword">inner</span> <span class="keyword">Join</span> Genre G   <i class="conum" data-value="3"></i><b>(3)</b>
+<span class="line-numbers">25</span><span class="keyword">on</span> G.GenreID = T.GenreID
+<span class="line-numbers">26</span>
+<span class="line-numbers">27</span><span class="keyword">Group</span> <span class="keyword">by</span>
+<span class="line-numbers">28</span>        G.GenreID
+<span class="line-numbers">29</span>        ,genreName   <i class="conum" data-value="4"></i><b>(4)</b>
+<span class="line-numbers">30</span><span class="keyword">order</span> <span class="keyword">by</span>
+<span class="line-numbers">31</span>        genreName;  <i class="conum" data-value="4"></i><b>(4)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Column Alias</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Aggregate column with alias</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Join (Inner)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Column alias in group by and order by</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>SQL Download link <a href="./SQL/0009-joinTypes.sql"> click here</a></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 9. Results for Inner Join</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">GenreId</th>
+<th class="tableblock halign-left valign-top">genreName</th>
+<th class="tableblock halign-left valign-top">numberTracks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">23</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alternative</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">40</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alternative &amp; Punk</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">332</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Blues</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">81</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bossa Nova</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">24</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Classical</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">74</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">22</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Comedy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">17</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">21</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Drama</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">64</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Easy Listening</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">24</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Electronica/Dance</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Heavy Metal</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">28</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">17</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hip Hop/Rap</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">35</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Jazz</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">130</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Latin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">579</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Metal</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">374</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">25</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Opera</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pop</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">48</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">R&amp;B/Soul</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">61</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reggae</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">58</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rock</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1297</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rock And Roll</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sci Fi &amp; Fantasy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">26</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">18</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Science Fiction</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Soundtrack</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">43</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">19</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TV Shows</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">93</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">16</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">World</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">28</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The Genres <code>Club</code>, <code>Dub Step</code>, <code>Trance</code> are not in the results because the have no tracks related to them.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Back to <a href="#top">Introduction</a>.</p>
+</div>
+<div class="paragraph">
+<p>The following query shows the results when a <code>Right Outer Join</code> is used.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This query is different from the one below, note which table is selected first.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Right Outer Join Example</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="sql"><span class="line-numbers"> 1</span><span class="comment">/*</span>
+<span class="line-numbers"> 2</span><span class="comment">=== joinTypes - Inner Join and Outer Join</span>
+<span class="line-numbers"> 3</span><span class="comment"></span>
+<span class="line-numbers"> 4</span><span class="comment">==== Topics</span>
+<span class="line-numbers"> 5</span><span class="comment"></span>
+<span class="line-numbers"> 6</span><span class="comment">* Aggregates (Count, Sum, Min, Max, Avg, etc)</span>
+<span class="line-numbers"> 7</span><span class="comment">* Between function</span>
+<span class="line-numbers"> 8</span><span class="comment">* Column Alias, rename a column</span>
+<span class="line-numbers"> 9</span><span class="comment">* Comments, information or debugging</span>
+<span class="line-numbers">10</span><span class="comment">* Group by, required for non-aggregate columns</span>
+<span class="line-numbers">11</span><span class="comment">* Join objects (Table, View, Derived Table) together</span>
+<span class="line-numbers">12</span><span class="comment">* Order by,  also known as sorting</span>
+<span class="line-numbers">13</span><span class="comment">* Where, results filter or restriction</span>
+<span class="line-numbers">14</span><span class="comment">* Table alias, standardize and simplify table/view names</span>
+<span class="line-numbers">15</span><span class="comment">*/</span>
+<span class="line-numbers">16</span><span class="comment">-- Track Count by Genre (Inner Join)  Right</span>
+<span class="line-numbers">17</span><span class="comment">-- This returns *ALL* 28 genres because the table on the right is the Genre table</span>
+<span class="line-numbers">18</span><span class="class">Select</span>
+<span class="line-numbers">19</span>    G.GenreID
+<span class="line-numbers">20</span>    ,G.Name <span class="keyword">as</span> genreName  <i class="conum" data-value="1"></i><b>(1)</b>
+<span class="line-numbers">21</span>    ,<span class="predefined">count</span>(T.TrackID) <span class="keyword">as</span> numberTracks <i class="conum" data-value="2"></i><b>(2)</b>
+<span class="line-numbers">22</span><span class="keyword">from</span> Track T
+<span class="line-numbers">23</span>
+<span class="line-numbers">24</span><span class="keyword">right</span> <span class="keyword">outer</span> <span class="keyword">Join</span> Genre G   <i class="conum" data-value="3"></i><b>(3)</b>
+<span class="line-numbers">25</span><span class="keyword">on</span> G.GenreID = T.GenreID  <span class="comment">-- NOTE: G is first table, T is second table</span>
+<span class="line-numbers">26</span>
+<span class="line-numbers">27</span><span class="keyword">Group</span> <span class="keyword">by</span>
+<span class="line-numbers">28</span>        G.GenreID
+<span class="line-numbers">29</span>        ,genreName   <i class="conum" data-value="4"></i><b>(4)</b>
+<span class="line-numbers">30</span><span class="keyword">order</span> <span class="keyword">by</span>
+<span class="line-numbers">31</span>        genreName;  <i class="conum" data-value="4"></i><b>(4)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Column Alias</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Aggregate column with alias</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Join (Right Outer)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Column alias in group by and order by</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+By default the first table in the select is the <code>Left</code> table, in this example it is the <code>Track</code> table.  The <code>joined</code> table is the <code>Right</code> table and in this example it is the <code>Genre</code> table.  Since this is a <code>Right</code> outer join all the rows from the <code>Right</code> table (Genre) are returned with any matching rows from the <code>Left</code> table (Tracks).
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>SQL Download link <a href="./SQL/0009-joinTypes.sql"> click here</a></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 10. Results for Right Outer Join</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">GenreId</th>
+<th class="tableblock halign-left valign-top">genreName</th>
+<th class="tableblock halign-left valign-top">numberTracks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">23</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alternative</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">40</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alternative &amp; Punk</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">332</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Blues</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">81</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bossa Nova</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">24</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Classical</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">74</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">32</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Club</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">22</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Comedy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">17</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">21</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Drama</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">64</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dub Step</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Easy Listening</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">24</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Electronica/Dance</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Heavy Metal</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">28</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">17</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hip Hop/Rap</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">35</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Jazz</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">130</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Latin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">579</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Metal</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">374</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">25</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Opera</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pop</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">48</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">R&amp;B/Soul</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">61</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reggae</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">58</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rock</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1297</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rock And Roll</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sci Fi &amp; Fantasy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">26</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">18</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Science Fiction</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Soundtrack</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">43</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">31</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trance</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">19</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TV Shows</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">93</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">16</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">World</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">28</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+All 28 Genres are returned in the results.  The Genres <code>Club</code>, <code>Dub Step</code>, <code>Trance</code> are included and have a zero (0) trackCount.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Back to <a href="#top">Introduction</a>.</p>
+</div>
+<div class="paragraph">
+<p>The following query shows the results when a <code>Left Outer Join</code> is used.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This query is different from the one above, note which table is selected first.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Left Outer Join Example</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="sql"><span class="line-numbers"> 1</span><span class="comment">/*</span>
+<span class="line-numbers"> 2</span><span class="comment">=== joinTypes - Inner Join and Outer Join</span>
+<span class="line-numbers"> 3</span><span class="comment"></span>
+<span class="line-numbers"> 4</span><span class="comment">==== Topics</span>
+<span class="line-numbers"> 5</span><span class="comment"></span>
+<span class="line-numbers"> 6</span><span class="comment">* Aggregates (Count, Sum, Min, Max, Avg, etc)</span>
+<span class="line-numbers"> 7</span><span class="comment">* Between function</span>
+<span class="line-numbers"> 8</span><span class="comment">* Column Alias, rename a column</span>
+<span class="line-numbers"> 9</span><span class="comment">* Comments, information or debugging</span>
+<span class="line-numbers">10</span><span class="comment">* Group by, required for non-aggregate columns</span>
+<span class="line-numbers">11</span><span class="comment">* Join objects (Table, View, Derived Table) together</span>
+<span class="line-numbers">12</span><span class="comment">* Order by,  also known as sorting</span>
+<span class="line-numbers">13</span><span class="comment">* Where, results filter or restriction</span>
+<span class="line-numbers">14</span><span class="comment">* Table alias, standardize and simplify table/view names</span>
+<span class="line-numbers">15</span><span class="comment">*/</span>
+<span class="line-numbers">16</span><span class="comment">-- Track Count by Genre (Inner Join)  Left</span>
+<span class="line-numbers">17</span><span class="comment">-- This returns *ALL* 28 genres because the table on the left is the Genre table</span>
+<span class="line-numbers">18</span><span class="class">Select</span>
+<span class="line-numbers">19</span>    G.GenreID
+<span class="line-numbers">20</span>    ,G.Name <span class="keyword">as</span> genreName  <i class="conum" data-value="1"></i><b>(1)</b>
+<span class="line-numbers">21</span>    ,<span class="predefined">count</span>(T.TrackID) <span class="keyword">as</span> numberTracks <i class="conum" data-value="2"></i><b>(2)</b>
+<span class="line-numbers">22</span><span class="keyword">from</span> Genre G
+<span class="line-numbers">23</span>
+<span class="line-numbers">24</span><span class="keyword">left</span> <span class="keyword">outer</span> <span class="keyword">Join</span> Track T  <i class="conum" data-value="3"></i><b>(3)</b>
+<span class="line-numbers">25</span><span class="keyword">on</span> T.GenreID = G.GenreID
+<span class="line-numbers">26</span>
+<span class="line-numbers">27</span><span class="keyword">Group</span> <span class="keyword">by</span>
+<span class="line-numbers">28</span>        G.GenreID
+<span class="line-numbers">29</span>        ,genreName   <i class="conum" data-value="4"></i><b>(4)</b>
+<span class="line-numbers">30</span><span class="keyword">order</span> <span class="keyword">by</span>
+<span class="line-numbers">31</span>        genreName;  <i class="conum" data-value="4"></i><b>(4)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Column Alias</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Aggregate column with alias</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Join (Left Outer)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Column alias in group by and order by</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+By default the first table in the select is the <code>Left</code> table, in this example it is the <code>Genre</code> table.  The <code>joined</code> table is the <code>Right</code> table and in this example it is the <code>Track</code> table.  Since this is a <code>Right</code> outer join all the rows from the <code>Left</code> table (Genre) are returned with any matching rows from the <code>Right</code> table (Tracks).
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>SQL Download link <a href="./SQL/0009-joinTypes.sql"> click here</a></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 11. Results for Left Outer Join</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">GenreId</th>
+<th class="tableblock halign-left valign-top">genreName</th>
+<th class="tableblock halign-left valign-top">numberTracks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">23</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alternative</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">40</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alternative &amp; Punk</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">332</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Blues</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">81</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bossa Nova</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">24</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Classical</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">74</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">32</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Club</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">22</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Comedy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">17</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">21</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Drama</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">64</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dub Step</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Easy Listening</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">24</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Electronica/Dance</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Heavy Metal</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">28</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">17</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hip Hop/Rap</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">35</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Jazz</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">130</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Latin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">579</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Metal</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">374</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">25</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Opera</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pop</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">48</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">R&amp;B/Soul</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">61</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reggae</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">58</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rock</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1297</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rock And Roll</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sci Fi &amp; Fantasy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">26</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">18</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Science Fiction</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Soundtrack</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">43</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">31</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Trance</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">19</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TV Shows</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">93</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">16</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">World</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">28</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+All 28 Genres are returned in the results.  The Genres <code>Club</code>, <code>Dub Step</code>, <code>Trance</code> are included and have a zero (0) trackCount.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Back to <a href="#top">Introduction</a>.</p>
+</div>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="derivedTable1PartA">4.9. derivedTable 1 - Part A</h3>
+<h3 id="derivedTable1PartA">3.9. derivedTable 1 - Part A</h3>
 <div class="paragraph">
 <p><strong>Objective:</strong> Get a list by Artist that includes number of albums, number of tracks, total artist minutes and average minutes per track.</p>
 </div>
@@ -2473,7 +3261,7 @@ Derived Tables are also know as sub-queries.
 <p>SQL Download link <a href="./SQL/0006a-derivedTable.sql"> click here</a></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 9. Results</caption>
+<caption class="title">Table 12. Results</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -2581,7 +3369,7 @@ Only 20 rows of the result being shown.  The result set has 204 rows, one for ea
 <div style="page-break-after: always;"></div>
 </div>
 <div class="sect2">
-<h3 id="derivedTable1PartB">4.10. derived Table 1 -Part B</h3>
+<h3 id="derivedTable1PartB">3.10. derived Table 1 -Part B</h3>
 <div class="paragraph">
 <p><strong>Objective:</strong> Get a list by Artist that includes number of albums, number of tracks, total artist minutes and average minutes per track.</p>
 </div>
@@ -2661,7 +3449,7 @@ Part B -Build the query that will become one of the derived tables
 <p>SQL Download link <a href="./SQL/0006a-derivedTable.sql"> click here</a></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 10. Results</caption>
+<caption class="title">Table 13. Results</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -2837,7 +3625,7 @@ Only 20 rows of the result being shown.  The result set has 204 rows, one for ea
 <div style="page-break-after: always;"></div>
 </div>
 <div class="sect2">
-<h3 id="derivedTable1PartC">4.11. derivedTable 1 - Part C</h3>
+<h3 id="derivedTable1PartC">3.11. derivedTable 1 - Part C</h3>
 <div class="paragraph">
 <p><strong>Objective:</strong> Get a list by Artist that includes number of albums, number of tracks, total artist minutes and average minutes per track.</p>
 </div>
@@ -2981,7 +3769,7 @@ Dividing by 60,000.00 translate this into minutes.</td>
 <p>SQL Download link <a href="./SQL/0006c-derivedTable.sql"> click here</a></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 11. Results</caption>
+<caption class="title">Table 14. Results</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -3158,7 +3946,7 @@ Only 20 rows of the result being shown.  The result set has 204 rows, one for ea
 <div style="page-break-after: always;"></div>
 </div>
 <div class="sect2">
-<h3 id="derivedTable2Parta">4.12. derivedTable 2 - Part A</h3>
+<h3 id="derivedTable2Parta">3.12. derivedTable 2 - Part A</h3>
 <div class="paragraph">
 <p><strong>Objective:</strong> The <strong>Top Order Tracks</strong> is a list of tracks from orders in a year that are $5 or more.
 What other tracks across all orders share a track from the <strong>Top Order Tracks</strong> list?</p>
@@ -3262,7 +4050,7 @@ two hypens <code>--</code> used to comment out a line</td>
 <p>SQL Download link <a href="./SQL/0007a-derivedTable.sql"> click here</a></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 12. Results</caption>
+<caption class="title">Table 15. Results</caption>
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -3349,7 +4137,7 @@ Only 20 rows of the result being shown.  The result set has 35 rows, one for eac
 <div style="page-break-after: always;"></div>
 </div>
 <div class="sect2">
-<h3 id="derivedTable2Partb">4.13. derivedTable 2 - Part B</h3>
+<h3 id="derivedTable2Partb">3.13. derivedTable 2 - Part B</h3>
 <div class="paragraph">
 <p><strong>Objective:</strong></p>
 </div>
@@ -3452,7 +4240,7 @@ The derived table name is used to qualify the use of the columns in the main que
 <p>SQL Download link <a href="./SQL/0007b-derivedTable.sql"> click here</a></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 13. Results</caption>
+<caption class="title">Table 16. Results</caption>
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -3539,7 +4327,7 @@ Only 20 rows of the result being shown.  The result set has 345 rows, one for ea
 <div style="page-break-after: always;"></div>
 </div>
 <div class="sect2">
-<h3 id="derivedTable2Partc">4.14. derivedTable 2 - Part C</h3>
+<h3 id="derivedTable2Partc">3.14. derivedTable 2 - Part C</h3>
 <div class="paragraph">
 <p><strong>Objective:</strong></p>
 </div>
@@ -3663,7 +4451,7 @@ The derived table name is used to qualify the use of the columns in the main que
 <p>SQL Download link <a href="./SQL/0007c-derivedTable.sql"> click here</a></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 14. Results</caption>
+<caption class="title">Table 17. Results</caption>
 <colgroup>
 <col style="width: 100%;">
 </colgroup>
@@ -3750,13 +4538,7 @@ Only 20 rows of the result being shown.  The result set has ??? rows, one for ea
 <div style="page-break-after: always;"></div>
 </div>
 <div class="sect2">
-<h3 id="derivedTable2Partd">4.15. derivedTable 2 - Part D</h3>
-<div class="paragraph">
-<p><strong>Objective:</strong></p>
-</div>
-<div class="paragraph">
-<p><strong>Approach:</strong></p>
-</div>
+<h3 id="derivedTable2Partd">3.15. derivedTable 2 - Part D</h3>
 <div class="imageblock">
 <div class="content">
 <img src="./images/derivedTablesFilters.png" alt="Filters">
@@ -3940,7 +4722,7 @@ The derived table name is used to qualify the use of the columns in the main que
 <p>SQL Download link <a href="./SQL/0007d-derivedTable.sql"> click here</a></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 15. Results</caption>
+<caption class="title">Table 18. Results</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -4111,7 +4893,7 @@ Only 20 rows of the result being shown.  The result set has 88 rows, one for eac
 <div style="page-break-after: always;"></div>
 </div>
 <div class="sect2">
-<h3 id="createView">4.16. Create View</h3>
+<h3 id="createView">3.16. Create View</h3>
 <div class="paragraph">
 <p>A view is a database object  is built from other database objects like tables and views.</p>
 </div>
@@ -4124,13 +4906,25 @@ Only 20 rows of the result being shown.  The result set has 88 rows, one for eac
 <div class="paragraph">
 <p>Unlike a table which takes up permanent space for its data, a view does not take up permanent space.</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+To create views in your database area you will need to have <code>Perm Space</code> assigned to your account.
+</td>
+</tr>
+</table>
+</div>
 <div class="sect3">
-<h4 id="_example">4.16.1. Example</h4>
+<h4 id="_example">3.16.1. Example</h4>
 <div class="paragraph">
 <p>In the Chinook database many of the queries require comprehensive Album information.</p>
 </div>
 <div class="paragraph">
-<p>To get the comprehensive information we need data from five different tables.</p>
+<p>The Album view with comprehensive album information we need join data from five different tables.</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
@@ -4153,37 +4947,14 @@ NOTE: Your account must have `perm space` assigned to it to create a view
 ** Track - Genre
 ** Track - Media Type
 
-==== TOPICS
+==== Topics
 
-* Table alias
-* Column Alias
-* Join Table together
-
-
-==== TIPS
-
-.Table Alias
-* Table alias shorten the typing needed to complete the query,
-1-3 character alias recommended.
-* Good practice is to have table alias used everywhere in the query.
-
-.Column Alias
-* Column alias help to give meaningful, non conflicting names.
-* Good practice, alias column names use lowerUpper naming
-to identify them as alias (albumCount)
-* Good practic, Use the same alias across all queries.
-
-.Naming practice
-* Good practice, System Generated Primary Index column name be
-include with `ID` suffix.
-* Good practice, Primary Key and Foreign Key join columns
-should use the same name.
-
-.Join requirements
-* Coulmns for join must match in data type and size.
-* Good practice, bring keys from join tables into the view when possible
-Helps to reduce debugging efforts later.
-
+* Calculated columns
+* Column Alias, rename a column
+* Comments, information or debugging
+* Join objects (Table, View, Derived Table) together
+* Table alias, standardize and simplify table/view names
+* Teradata Specific syntax
 */</span>
 
 
@@ -4231,7 +5002,7 @@ Helps to reduce debugging efforts later.
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>To change the view use the <code>update</code> statement</td>
+<td>To change an existing view use the <code>update</code> statement</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
@@ -4247,8 +5018,19 @@ Helps to reduce debugging efforts later.
 </tr>
 <tr>
 <td><i class="conum" data-value="6"></i><b>6</b></td>
-<td>Table alias, each joined table has it own unique table alias.
-NOTE: This example the <code>Album</code> table was chosen as the main table of the view.</td>
+<td>Table alias, each joined table has it own unique table alias.</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+In this example the <code>Album</code> table was chosen as the main table of the view.
+</td>
 </tr>
 </table>
 </div>
@@ -4319,16 +5101,572 @@ Any bulk comments <code>/* comments \*/</code> will have been stripped out by Te
 <div style="page-break-after: always;"></div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="dateFilters">3.17. Date Filters</h3>
+<div class="paragraph">
+<p>The Teradata <code>extract</code> function provides month, day and year.</p>
+</div>
+<div class="paragraph">
+<p>The Teradata <code>Csum</code> OLAP function is used for the running totals.</p>
+</div>
+<div class="paragraph">
+<p>Csum( <code>column to sum</code>, <code>Column to sum by</code> ).</p>
+</div>
+<div class="paragraph">
+<p>This query displays a cumulative sum (Running total) of the sales occurring during the "Bargain Days".
+"Bargain Days" are the first week of September thru December for 2018.</p>
+</div>
+<div class="listingblock">
+<div class="title">SQL Example</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="sql"><span class="line-numbers"> 1</span><span class="comment">/*</span>
+<span class="line-numbers"> 2</span><span class="comment"></span>
+<span class="line-numbers"> 3</span><span class="comment">dateFilters  Date filters and OLAP function</span>
+<span class="line-numbers"> 4</span><span class="comment"></span>
+<span class="line-numbers"> 5</span><span class="comment">==== Topics</span>
+<span class="line-numbers"> 6</span><span class="comment"></span>
+<span class="line-numbers"> 7</span><span class="comment">* Column Alias, rename a column</span>
+<span class="line-numbers"> 8</span><span class="comment">* Comments, information or debugging</span>
+<span class="line-numbers"> 9</span><span class="comment">* Date functions</span>
+<span class="line-numbers">10</span><span class="comment">* OLAP function basic (Csum, Rank, Cube)</span>
+<span class="line-numbers">11</span><span class="comment">* Order by,  also known as sorting</span>
+<span class="line-numbers">12</span><span class="comment">* Where, results filter or restriction</span>
+<span class="line-numbers">13</span><span class="comment">* Table alias, standardize and simplify table/view names</span>
+<span class="line-numbers">14</span><span class="comment">*/</span>
+<span class="line-numbers">15</span>
+<span class="line-numbers">16</span><span class="class">select</span>
+<span class="line-numbers">17</span>        I.InvoiceDate
+<span class="line-numbers">18</span>        ,extract(month <span class="keyword">from</span> I.InvoiceDate) <span class="keyword">as</span> invoiceMonth <i class="conum" data-value="1"></i><b>(1)</b> <i class="conum" data-value="2"></i><b>(2)</b>
+<span class="line-numbers">19</span>        ,extract(day <span class="keyword">from</span> I.InvoiceDate) <span class="keyword">as</span> invoiceDay <i class="conum" data-value="2"></i><b>(2)</b>
+<span class="line-numbers">20</span>        ,I.CustomerID
+<span class="line-numbers">21</span>        ,I.Total <span class="keyword">as</span> invoiceTotal  <i class="conum" data-value="1"></i><b>(1)</b>
+<span class="line-numbers">22</span>        ,csum(invoiceTotal, I.InvoiceDate) <span class="keyword">as</span> cumulativeSum <i class="conum" data-value="3"></i><b>(3)</b>
+<span class="line-numbers">23</span><span class="keyword">from</span> Invoice I <i class="conum" data-value="4"></i><b>(4)</b>
+<span class="line-numbers">24</span>
+<span class="line-numbers">25</span><span class="keyword">where</span>
+<span class="line-numbers">26</span>    extract(month <span class="keyword">from</span> I.InvoiceDate) <span class="keyword">in</span> (<span class="integer">9</span>,<span class="integer">10</span>,<span class="integer">11</span>,<span class="integer">12</span>)   <i class="conum" data-value="2"></i><b>(2)</b>
+<span class="line-numbers">27</span><span class="keyword">and</span> extract(day <span class="keyword">from</span> I.InvoiceDate) <span class="keyword">in</span> (<span class="integer">1</span>,<span class="integer">2</span>,<span class="integer">3</span>,<span class="integer">4</span>,<span class="integer">5</span>,<span class="integer">6</span>,<span class="integer">7</span>,<span class="integer">8</span>)   <i class="conum" data-value="2"></i><b>(2)</b>
+<span class="line-numbers">28</span><span class="keyword">and</span> extract(<span class="predefined-type">year</span> <span class="keyword">from</span> I.InvoiceDate) = <span class="integer">2018</span>  <i class="conum" data-value="2"></i><b>(2)</b>
+<span class="line-numbers">29</span><span class="keyword">order</span> <span class="keyword">by</span>
+<span class="line-numbers">30</span>        I.InvoiceDate</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Column Alias</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Date function <code>Extract</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>OLAP Csum</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Table alias</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>SQL Download link <a href="./SQL/0012-dateFilters.sql"> click here</a></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 19. Results</caption>
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">InvoiceDate</th>
+<th class="tableblock halign-left valign-top">invoiceMonth</th>
+<th class="tableblock halign-left valign-top">invoiceDay</th>
+<th class="tableblock halign-left valign-top">CustomerId</th>
+<th class="tableblock halign-left valign-top">invoiceTotal</th>
+<th class="tableblock halign-left valign-top">cumulativeSum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2018-09-02</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">25</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.98</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.98</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2018-09-02</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">27</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.98</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.96</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2018-09-03</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">29</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.96</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.92</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2018-09-04</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">33</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.94</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13.86</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2018-09-07</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">39</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8.91</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">22.77</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2018-10-03</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.98</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">26.73</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2018-10-03</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.98</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">24.75</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2018-10-04</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.96</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30.69</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2018-10-05</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.94</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">36.63</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2018-10-08</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">18</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8.91</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">45.54</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2018-11-03</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">44</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.98</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">49.50</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2018-11-03</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">42</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.98</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">47.52</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2018-11-04</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">46</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.96</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">53.46</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2018-11-05</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">50</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.94</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">59.40</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2018-11-08</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">56</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8.91</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">68.31</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2018-12-04</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">21</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.98</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">72.27</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2018-12-04</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">23</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.98</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">70.29</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2018-12-05</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">25</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.96</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">76.23</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2018-12-06</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">29</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.94</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">82.17</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Back to <a href="#top">Introduction</a>.</p>
+</div>
+<div style="page-break-after: always;"></div>
+<div style="page-break-after: always;"></div>
+</div>
+<div class="sect2">
+<h3 id="ranking">3.18. Ranking</h3>
+<div class="paragraph">
+<p>Ranking is a combination of sorting the results and assigning an ordinal number corresponding to the rank for the result.  Similar ranked numbers share the ordinal number assigned to them.</p>
+</div>
+<div class="paragraph">
+<p>The Teradata <code>Rank</code> function uses just one argument, the column you want to rank by.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The <code>Rank</code> function and aggregate functions can not be a single select query.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In this query we want</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Ranking of <strong>Genre</strong> by the number of <code>Sales</code>.</p>
+</li>
+<li>
+<p>A <code>Sale</code> relates to an single <strong>InvoiceLineItem</strong>.</p>
+</li>
+<li>
+<p>Each <strong>InvoiceLineItem</strong> is related to a <strong>Track</strong> which has the <strong>Genre</strong> information</p>
+</li>
+<li>
+<p>So an <strong>Invoice</strong> with 6 <strong>InvoiceLineItems</strong> counts as a <code>Sale</code> count of 6</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">SQL Example</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="sql"><span class="line-numbers"> 1</span><span class="comment">/*</span>
+<span class="line-numbers"> 2</span><span class="comment"></span>
+<span class="line-numbers"> 3</span><span class="comment">=== Ranking - How to perform a ranking of the results</span>
+<span class="line-numbers"> 4</span><span class="comment"></span>
+<span class="line-numbers"> 5</span><span class="comment">NOTE: Because `rank` can *NOT* be done in the same query as an aggregate function `count`</span>
+<span class="line-numbers"> 6</span><span class="comment">this query uses a derived table for the `count` which is used in the main query for the `rank`</span>
+<span class="line-numbers"> 7</span><span class="comment"></span>
+<span class="line-numbers"> 8</span><span class="comment">==== Topics</span>
+<span class="line-numbers"> 9</span><span class="comment"></span>
+<span class="line-numbers">10</span><span class="comment">* Aggregates (Count, Sum, Min, Max, Avg, etc)</span>
+<span class="line-numbers">11</span><span class="comment">* Column Alias, rename a column</span>
+<span class="line-numbers">12</span><span class="comment">* Comments, information or debugging</span>
+<span class="line-numbers">13</span><span class="comment">* Derived Table (Sub-Query)</span>
+<span class="line-numbers">14</span><span class="comment">* Group by, required for non-aggregate columns</span>
+<span class="line-numbers">15</span><span class="comment">* Join objects (Table, View, Derived Table) together</span>
+<span class="line-numbers">16</span><span class="comment">* OLAP function basic (Csum, Rank, Cube)</span>
+<span class="line-numbers">17</span><span class="comment">* Table alias, standardize and simplify table/view names</span>
+<span class="line-numbers">18</span><span class="comment">* Teradata Specific syntax</span>
+<span class="line-numbers">19</span><span class="comment">* Union, multiple select queries stacked</span>
+<span class="line-numbers">20</span><span class="comment"></span>
+<span class="line-numbers">21</span><span class="comment">==== Special Notes</span>
+<span class="line-numbers">22</span><span class="comment">* Do *NOT* use `order by` when using `rank`, this will return the incorrect results</span>
+<span class="line-numbers">23</span><span class="comment">*/</span>
+<span class="line-numbers">24</span>
+<span class="line-numbers">25</span><span class="class">Select</span>
+<span class="line-numbers">26</span>   GC.genreName
+<span class="line-numbers">27</span>   ,GC.saleCount
+<span class="line-numbers">28</span>   ,rank(GC.saleCount) <span class="keyword">as</span> ranking  <i class="conum" data-value="1"></i><b>(1)</b> <i class="conum" data-value="2"></i><b>(2)</b>
+<span class="line-numbers">29</span><span class="keyword">from</span>
+<span class="line-numbers">30</span>(
+<span class="line-numbers">31</span>        <span class="class">SELECT</span>
+<span class="line-numbers">32</span>                G.Name <span class="keyword">as</span> genreName  <i class="conum" data-value="1"></i><b>(1)</b>
+<span class="line-numbers">33</span>                ,<span class="predefined">count</span>(IL.InvoiceLineID) <span class="keyword">As</span> saleCount <i class="conum" data-value="3"></i><b>(3)</b>
+<span class="line-numbers">34</span>        <span class="keyword">from</span> InvoiceLine IL
+<span class="line-numbers">35</span>
+<span class="line-numbers">36</span>        <span class="keyword">inner</span> <span class="keyword">join</span> Track T  <i class="conum" data-value="4"></i><b>(4)</b>
+<span class="line-numbers">37</span>        <span class="keyword">on</span> T.trackID = IL.TrackID
+<span class="line-numbers">38</span>
+<span class="line-numbers">39</span>        <span class="keyword">inner</span> <span class="keyword">join</span> Genre G  <i class="conum" data-value="4"></i><b>(4)</b>
+<span class="line-numbers">40</span>        <span class="keyword">on</span> G.GenreID = T.GenreID
+<span class="line-numbers">41</span>
+<span class="line-numbers">42</span>        <span class="keyword">group</span> <span class="keyword">by</span>
+<span class="line-numbers">43</span>                genreName  <i class="conum" data-value="5"></i><b>(5)</b>
+<span class="line-numbers">44</span>) <span class="keyword">as</span> GC  <span class="comment">-- genreCounts derviced table name (GC)  </span><i class="conum" data-value="6"></i><b>(6)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Column alias</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>OLAP function Rank</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Aggregate function Count</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Table alias</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Column Alias for group by</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>Derived Table (Sub-query) named <code>GC</code> for genreCounts</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Because the <code>GC</code> columns come from a derived table they can be used in <code>group by</code>.
+The restriction is that the Table alias <code>GC</code> can <strong>NOT</strong> be part of the column name.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Because <code>Rank</code> is automatically doing the <code>Order by</code> based on the column in the <code>Rank</code> statement.
+Do <strong>NOT</strong> add an additional <code>order by</code> the results will be incorrect.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>SQL Download link <a href="./SQL/0014-rank.sql"> click here</a></p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 20. Results</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">genreName</th>
+<th class="tableblock halign-left valign-top">saleCount</th>
+<th class="tableblock halign-left valign-top">ranking</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rock</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">835</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Latin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">386</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Metal</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">264</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alternative &amp; Punk</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">244</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Jazz</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">80</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Blues</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">61</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TV Shows</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">47</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Classical</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">41</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">R&amp;B/Soul</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">41</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reggae</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Drama</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">29</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pop</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">28</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sci Fi &amp; Fantasy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Soundtrack</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hip Hop/Rap</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">17</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bossa Nova</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">16</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alternative</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">17</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">World</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">18</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Heavy Metal</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">19</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Electronica/Dance</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">19</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Easy Listening</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">21</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Comedy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">22</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rock And Roll</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">23</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Science Fiction</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">23</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>&lt;1&gt;</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The Genre&#8217;s <code>Sci Fi &amp; Fantasy</code> and <code>Soundtrack</code> share ranking number <code>13</code> because they both have a <code>saleCount</code> of <code>20</code>.  There are two other shared ranking numbers <code>19</code> and <code>23</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Back to <a href="#top">Introduction</a>.</p>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_tips">5. Tips</h2>
+<h2 id="_tips">4. Tips</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This tips can  be considered suggestions to make developing SQL a little bit easier.</p>
 </div>
 <div class="sect2">
-<h3 id="_aggregate_functions">5.1. Aggregate Functions</h3>
+<h3 id="_aggregate_functions">4.1. Aggregate Functions</h3>
 <div class="paragraph">
 <p>These functions are  used to compress or limit the number of rows into a single row.</p>
 </div>
@@ -4347,7 +5685,7 @@ Any bulk comments <code>/* comments \*/</code> will have been stripped out by Te
 </div>
 </div>
 <div class="sect2">
-<h3 id="_column_alias">5.2. Column Alias</h3>
+<h3 id="_column_alias">4.2. Column Alias</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -4364,7 +5702,7 @@ to identify them as alias (ie: albumCount, salesDollars, genreAverage)</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_dates">5.3. Dates</h3>
+<h3 id="_dates">4.3. Dates</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -4380,7 +5718,7 @@ to identify them as alias (ie: albumCount, salesDollars, genreAverage)</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_derived_tables_sub_queries">5.4. Derived Tables (Sub-Queries)</h3>
+<h3 id="_derived_tables_sub_queries">4.4. Derived Tables (Sub-Queries)</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -4402,7 +5740,7 @@ to identify them as alias (ie: albumCount, salesDollars, genreAverage)</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_formatting_conversion">5.5. Formatting / Conversion</h3>
+<h3 id="_formatting_conversion">4.5. Formatting / Conversion</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -4419,25 +5757,7 @@ to identify them as alias (ie: albumCount, salesDollars, genreAverage)</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_naming_practice">5.6. Naming practice</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Good practice, System Generated Primary Index column name
-include a <code>ID</code> suffix (AlbumID, TrackID).</p>
-</li>
-<li>
-<p>Good practice, Primary Key and Foreign Key join columns
-should use the same name.</p>
-</li>
-<li>
-<p>Short descriptive column names are better than abbreviations.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_join">5.7. Join</h3>
+<h3 id="_join">4.6. Join</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -4459,7 +5779,38 @@ should use the same name.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_order_by">5.8. Order By</h3>
+<h3 id="_naming_practice">4.7. Naming practice</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Good practice, System Generated Primary Index column name
+include a <code>ID</code> suffix (AlbumID, TrackID).</p>
+</li>
+<li>
+<p>Good practice, Primary Key and Foreign Key join columns
+should use the same name.</p>
+</li>
+<li>
+<p>Short descriptive column names are better than abbreviations.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_olap_functions">4.8. OLAP Functions</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><code>CSUM</code> uses two arguments.  First argument is the column to be summed, the second argument is the column to <code>sum by</code>.</p>
+</li>
+<li>
+<p><code>Rank</code> only has one argument.  This argument is the field to be ranked.  Duplicate values in this argument will share a ranking number.  <code>Rank</code> automatically performs an <code>order by</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_order_by">4.9. Order By</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -4472,7 +5823,7 @@ should use the same name.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_select_columns">5.9. Select columns</h3>
+<h3 id="_select_columns">4.10. Select columns</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -4514,7 +5865,7 @@ should use the same name.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_table_alias">5.10. Table Alias</h3>
+<h3 id="_table_alias">4.11. Table Alias</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -4534,7 +5885,7 @@ should use the same name.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_teradata_specific">5.11. Teradata Specific</h3>
+<h3 id="_teradata_specific">4.12. Teradata Specific</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -4548,7 +5899,7 @@ for making it <code>Primary Index</code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_union">5.12. Union</h3>
+<h3 id="_union">4.13. Union</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -4567,7 +5918,7 @@ for making it <code>Primary Index</code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_where">5.13. Where</h3>
+<h3 id="_where">4.14. Where</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -4586,7 +5937,7 @@ for making it <code>Primary Index</code>.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_contact_information">6. Contact Information</h2>
+<h2 id="_contact_information">5. Contact Information</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Author contact Information</p>
@@ -4607,7 +5958,7 @@ for making it <code>Primary Index</code>.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Please provide any feedback, corrections or suggestions to the author.  The folks providing the most anount of feedback will win prizes.
+Please provide any feedback, corrections or suggestions to the author.  The folks providing the most amount of feedback will win prizes.
 </td>
 </tr>
 </table>
@@ -4616,10 +5967,28 @@ Please provide any feedback, corrections or suggestions to the author.  The folk
 </div>
 </div>
 <div class="sect1">
-<h2 id="_reference">7. Reference</h2>
+<h2 id="_reference">6. Reference</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>This reference material and links may change over time.</p>
+</div>
+<div class="paragraph">
+<p>If you get a broken link use your GoogleFoo to locate the material.</p>
+</div>
 <div class="sect2">
-<h3 id="_teradata_links">7.1. Teradata links</h3>
+<h3 id="_related_links">6.1. Related Links</h3>
+<div class="paragraph">
+<p>Database 5 Pro SQL Tool: <a href="https://fishcodelib.com/database.htm">https://fishcodelib.com/database.htm</a></p>
+</div>
+<div class="paragraph">
+<p>DBeaver SQL Tool: <a href="https://dbeaver.io/">https://dbeaver.io/</a></p>
+</div>
+<div class="paragraph">
+<p>Stack Overflow (Teradata Forum): <a href="https://stackoverflow.com/questions/tagged/teradata" target="_blank" rel="noopener">https://stackoverflow.com/questions/tagged/teradata</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_teradata_links">6.2. Teradata links</h3>
 <div class="paragraph">
 <p>Documentation: <a href="https://docs.teradata.com/landing-page/" target="_blank" rel="noopener">https://docs.teradata.com/landing-page/</a></p>
 </div>
@@ -4633,17 +6002,26 @@ Please provide any feedback, corrections or suggestions to the author.  The folk
 <p>SQL Introduction: <a href="https://bit.ly/2Fhxp5C" class="bare" target="_blank" rel="noopener">https://bit.ly/2Fhxp5C</a></p>
 </div>
 <div class="paragraph">
-<p>Stack Overflow (Teradata Forum): <a href="https://stackoverflow.com/questions/tagged/teradata" target="_blank" rel="noopener">https://stackoverflow.com/questions/tagged/teradata</a></p>
+<p>Teradata Studio: <a href="http://downloads.teradata.com/download/tools/teradata-studio">http://downloads.teradata.com/download/tools/teradata-studio</a></p>
+</div>
+<div class="paragraph">
+<p>Teradata Tools and Utilities (TTU): <a href="https://downloads.teradata.com/download/tools/teradata-tools-and-utilities-windows-installation-package">https://downloads.teradata.com/download/tools/teradata-tools-and-utilities-windows-installation-package</a></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_column_type">7.2. Column Type</h3>
+<h3 id="_chinook_database_creation">6.3. Chinook database creation</h3>
+<div class="paragraph">
+<p>The Teradata script used to create the Chinook database is avaliable at this <a href="./SQL/0000-createDatabaseLocal.sql"> link.</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_column_type">6.4. Column Type</h3>
 <div class="paragraph">
 <p>ColumnType reference table.
 Reference: <a href="http://developer.teradata.com/doc/connectivity/tdnetdp/14.00/webhelp/DataTypeMappings.html" class="bare">http://developer.teradata.com/doc/connectivity/tdnetdp/14.00/webhelp/DataTypeMappings.html</a></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 16. ColumnType</caption>
+<caption class="title">Table 21. ColumnType</caption>
 <colgroup>
 <col style="width: 27.2727%;">
 <col style="width: 72.7273%;">
@@ -4830,10 +6208,10 @@ Reference: <a href="http://developer.teradata.com/doc/connectivity/tdnetdp/14.00
 </div>
 </div>
 <div class="sect1">
-<h2 id="_document_history">8. Document History</h2>
+<h2 id="_document_history">7. Document History</h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 17. Document History</caption>
+<caption class="title">Table 22. Document History</caption>
 <colgroup>
 <col style="width: 16.6666%;">
 <col style="width: 16.6666%;">
@@ -4850,11 +6228,19 @@ Reference: <a href="http://developer.teradata.com/doc/connectivity/tdnetdp/14.00
 </thead>
 <tbody>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">01/11/2019</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">V2.1n</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JHRS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Added view updates, dateFunctions, SQL Tool info
+                              title 'Learning Guide'</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">01/10/2019</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">V2.1M</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">JHRS</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Moved Tips from SQL queries to make them smaller
-                              and avoid sync issues</p></td>
+                              and avoid sync issues, fixed join definitions
+                              updated derived query B</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">01/09/2019</p></td>
@@ -4919,8 +6305,8 @@ Reference: <a href="http://developer.teradata.com/doc/connectivity/tdnetdp/14.00
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 2.1k<br>
-Last updated 2019-01-10 12:28:49 -0500
+Version 2.1n<br>
+Last updated 2019-01-11 13:42:35 -0500
 </div>
 </div>
 </body>
